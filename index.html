@@ -1,0 +1,1034 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F3F4F7">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Степан Семенюк — сайты под любую нишу">
+<meta property="og:description" content="Сайты, веб-дизайн, Telegram-боты и визитки. Портфолио и заявка в один клик.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23101218'/%3E%3Ctext x='32' y='41' font-family='Arial Black,Arial' font-weight='900' font-size='22' fill='white' text-anchor='middle'%3EС%2FС%3C/text%3E%3C/svg%3E">
+<title>Степан Семенюк</title>
+<meta name="description" content="Степан Семенюк: сайты, веб-дизайн, Telegram-боты и визитки под любую нишу.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700&family=Oswald:wght@600&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap">
+<style>
+/* Layout: white lab bench. Chrome spheres float behind frosted glass; big extended type with
+   serif-italic accents; blueprint-blue HUD callouts annotate the work like a spec sheet. */
+:root{
+  color-scheme: light;
+  --bg:#F3F4F7;
+  --paper:#FFFFFF;
+  --ink:#101218;
+  --ink-2:#464B58;
+  --ink-3:#868B98;
+  --line:rgba(16,18,24,.12);
+  --accent:#2C38D8;
+  --accent-soft:rgba(44,56,216,.10);
+  --glass:rgba(255,255,255,.44);
+  --glass-strong:rgba(255,255,255,.7);
+  --glass-edge:rgba(255,255,255,.9);
+  --shadow:0 24px 60px -28px rgba(22,26,48,.28);
+
+  --f-display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --f-body:"Onest",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --f-serif:"Cormorant Garamond","Times New Roman",Georgia,serif;
+
+  --r-pill:999px;
+  --r-card:28px;
+  --maxw:1240px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--f-body);font-size:16px;line-height:1.6;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:12px}
+img{max-width:100%}
+.wrap{
+  max-width:var(--maxw);margin-inline:auto;
+  padding-left:max(16px, env(safe-area-inset-left,0px));
+  padding-right:max(16px, env(safe-area-inset-right,0px));
+}
+@media (min-width:720px){.wrap{padding-left:max(32px, env(safe-area-inset-left,0px));padding-right:max(32px, env(safe-area-inset-right,0px))}}
+.mono{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+.acc{color:var(--accent)}
+
+/* ---------- glass ---------- */
+.glass{
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(12px) saturate(160%);
+  backdrop-filter:blur(12px) saturate(160%);
+  border:1px solid var(--glass-edge);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 0 rgba(16,18,24,.04), var(--shadow);
+}
+
+/* ---------- background scene ---------- */
+.scene{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.orb-p{position:absolute;will-change:transform}
+.orb{
+  width:100%;height:100%;border-radius:50%;
+  background:radial-gradient(circle at var(--hx,32%) var(--hy,28%), #ffffff 0, #eef0f4 14%, #c3c8d2 42%, #8d93a2 66%, #b9bec9 84%, #eceef2 100%);
+  box-shadow:inset -20px -30px 60px rgba(70,76,92,.35), 0 40px 80px -30px rgba(30,34,50,.35);
+  animation:float 14s ease-in-out infinite;
+}
+.orb.blue{background:radial-gradient(circle at var(--hx,32%) var(--hy,28%), #e9ebff 0, #9aa2ff 20%, #4c58ea 48%, #1f2aa8 78%, #6c76f0 100%)}
+.orb.soft{filter:blur(28px);opacity:.55}
+@keyframes float{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-22px,0)}}
+
+/* ---------- header ---------- */
+.top{
+  position:fixed;left:0;right:0;top:0;z-index:50;
+  padding-top:calc(env(safe-area-inset-top,0px) + 14px);
+}
+.top-in{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pill{border-radius:var(--r-pill);display:inline-flex;align-items:center;gap:8px;height:52px;padding:0 22px;font-size:14px;font-weight:500}
+.logo{font-family:var(--f-display);font-weight:700;letter-spacing:.02em;padding:0 20px}
+.logo i{font-style:normal;color:var(--accent)}
+.nav{gap:4px;padding:0 8px}
+.nav a{padding:9px 14px;border-radius:var(--r-pill);color:var(--ink-2);transition:background .25s,color .25s}
+.nav a:hover{background:rgba(255,255,255,.85);color:var(--ink)}
+.cta{padding:0 18px 0 6px}
+.cta .ico{width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:15px}
+.menu-btn{display:none;font:inherit;color:var(--ink);cursor:pointer}
+.mnav{display:none}
+@media (max-width:900px){
+  .nav,.cta{display:none}
+  .menu-btn{display:inline-flex}
+  .mnav{
+    position:fixed;z-index:49;left:max(16px, env(safe-area-inset-left,0px));right:max(16px, env(safe-area-inset-right,0px));
+    top:calc(env(safe-area-inset-top,0px) + 76px);border-radius:24px;padding:10px;
+    display:flex;flex-direction:column;gap:2px;
+  }
+  .mnav a{padding:14px 16px;border-radius:16px;font-size:17px;font-weight:500}
+  .mnav a:active{background:rgba(255,255,255,.9)}
+}
+
+main{position:relative;z-index:1}
+section{position:relative}
+
+/* ---------- hero ---------- */
+.hero{padding-top:calc(env(safe-area-inset-top,0px) + 120px);padding-bottom:56px;overflow:hidden}
+.hero-grid{
+  position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--accent-soft) 1px, transparent 1px),linear-gradient(90deg, var(--accent-soft) 1px, transparent 1px);
+  background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(260px circle at var(--mx,70%) var(--my,40%), #000 0, transparent 70%);
+  mask-image:radial-gradient(260px circle at var(--mx,70%) var(--my,40%), #000 0, transparent 70%);
+  opacity:1;transition:opacity .4s;
+}
+.hud{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.hud b{font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+.stage{position:relative;margin-top:28px}
+.title{
+  font-family:var(--f-display);font-weight:500;text-transform:uppercase;
+  font-size:clamp(44px, 11.4vw, 178px);line-height:.9;letter-spacing:-.035em;
+  margin:0;display:flex;flex-direction:column;position:relative;z-index:1;
+}
+.title span{display:block}
+.title .l2{padding-left:12%}
+.title .l3{text-align:right;padding-right:3%}
+.title em{
+  font-family:var(--f-serif);font-style:italic;font-weight:500;text-transform:none;
+  font-size:1.14em;letter-spacing:-.02em;color:var(--accent);
+}
+.title .dot{color:var(--accent);font-style:normal}
+
+.disk-p{position:absolute;z-index:2;pointer-events:none;will-change:transform}
+.disk{
+  width:100%;aspect-ratio:1;border-radius:50%;
+  -webkit-backdrop-filter:blur(6px) saturate(1.4);backdrop-filter:blur(6px) saturate(1.4);
+  background:radial-gradient(circle at var(--hx,30%) var(--hy,24%), rgba(255,255,255,.85) 0, rgba(255,255,255,.22) 38%, rgba(214,218,228,.22) 72%, rgba(255,255,255,.45) 100%);
+  border:1px solid rgba(255,255,255,.95);
+  box-shadow:inset -14px -18px 36px rgba(110,118,138,.28), inset 10px 12px 24px rgba(255,255,255,.85), 0 34px 60px -26px rgba(20,24,44,.35);
+}
+.disk.tint{background:radial-gradient(circle at var(--hx,30%) var(--hy,24%), rgba(255,255,255,.85) 0, rgba(140,150,255,.22) 40%, rgba(44,56,216,.22) 80%, rgba(255,255,255,.4) 100%)}
+.d1{width:clamp(110px,17vw,250px);top:-6%;left:50%}
+.d2{width:clamp(80px,12vw,180px);top:36%;left:4%}
+.d2 .disk{animation-duration:9s;animation-delay:-3s}
+.d3{width:clamp(120px,19vw,280px);top:56%;left:66%}
+.d3 .disk{animation-duration:13s;animation-delay:-6s}
+
+.callout{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.callout .box{border:1px solid var(--accent);background:rgba(255,255,255,.75);padding:7px 10px;border-radius:6px;color:var(--ink);line-height:1.35}
+.callout .box small{display:block;color:var(--accent)}
+.callout .ln{width:64px;height:1px;background:var(--accent);position:relative}
+.callout .ln::after{content:"";position:absolute;right:-3px;top:-3px;width:7px;height:7px;background:var(--accent)}
+.callout.left .ln::after{right:auto;left:-3px}
+.c1{top:4%;right:2%}
+.c2{top:44%;right:6%}
+.c3{bottom:-2%;left:6%}
+.callout.left{flex-direction:row-reverse}
+
+.hero-foot{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:end;margin-top:56px}
+.lead{font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:var(--ink-2);max-width:56ch;margin:0}
+.lead b{color:var(--ink);font-weight:600}
+.actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.btn{display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 26px;border-radius:var(--r-pill);font-weight:500;font-size:15px;transition:box-shadow .3s, background .3s;cursor:pointer;border:0;font-family:inherit;color:var(--ink)}
+.btn-ink{background:var(--ink);color:#fff;box-shadow:0 18px 40px -18px rgba(16,18,24,.6), inset 0 1px 0 rgba(255,255,255,.18)}
+.btn-ink:hover{background:var(--accent)}
+.btn.glass:hover{background:var(--glass-strong)}
+.btn .arr{font-size:18px;line-height:1}
+.mini-hud{display:none}
+
+@media (max-width:900px){
+  .callout{display:none}
+  .hero-foot{grid-template-columns:1fr;margin-top:40px}
+  .actions{justify-content:flex-start}
+  .mini-hud{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+  .mini-hud span{border:1px solid var(--accent);border-radius:6px;padding:6px 9px;background:rgba(255,255,255,.7);color:var(--ink)}
+  .title .l2{padding-left:0}
+}
+@media (max-width:480px){
+  .hero{padding-top:calc(env(safe-area-inset-top,0px) + 100px)}
+  .btn{height:54px;padding:0 22px;flex:1 1 auto;justify-content:center}
+}
+
+/* ---------- marquee ---------- */
+.band{margin-block:8px 0;padding-block:18px;overflow:hidden;border-radius:0;border-left:0;border-right:0}
+.track{display:flex;gap:40px;width:max-content;animation:marq 38s linear infinite}
+.band:hover .track{animation-play-state:paused}
+.track span{display:inline-flex;align-items:center;gap:12px;font-family:var(--f-display);font-size:clamp(18px,2.2vw,28px);font-weight:400;text-transform:uppercase;letter-spacing:-.01em;white-space:nowrap}
+.track span.done::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--accent-soft)}
+.track span.next{color:var(--ink-3)}
+.track span.you{font-family:var(--f-serif);font-style:italic;text-transform:none;font-size:clamp(22px,2.7vw,34px);color:var(--accent)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ---------- section heads ---------- */
+.sec{padding-block:clamp(72px,10vw,140px)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(32px,5vw,56px)}
+.h2{font-family:var(--f-display);font-weight:500;font-size:clamp(32px,5.2vw,68px);line-height:1;letter-spacing:-.03em;margin:0;text-wrap:balance}
+.h2 em{font-family:var(--f-serif);font-style:italic;font-weight:500;font-size:1.16em;letter-spacing:-.01em;color:var(--accent)}
+.h2 sup{font-family:var(--f-mono);font-size:.22em;font-weight:400;vertical-align:top;margin-left:.4em;border:1px solid var(--ink);border-radius:var(--r-pill);padding:.25em .7em;letter-spacing:.05em;position:relative;top:.4em}
+.head p{max-width:42ch;margin:0;color:var(--ink-2)}
+.eyebrow{display:block;margin-bottom:18px}
+
+/* ---------- services ---------- */
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{border-radius:var(--r-card);padding:26px;display:flex;flex-direction:column;gap:14px;min-width:0;transition:transform .4s cubic-bezier(.2,.8,.2,1), background .3s}
+.card:hover{background:var(--glass-strong)}
+.card .tag{align-self:flex-start;border:1px solid var(--line);border-radius:var(--r-pill);padding:5px 10px}
+.glyph{width:64px;height:64px;border-radius:18px;background:linear-gradient(145deg,#fff,#e6e8ee);box-shadow:inset 0 1px 0 #fff, 0 10px 24px -12px rgba(20,24,44,.35);display:grid;place-items:center;margin-top:6px}
+.glyph svg{width:34px;height:34px}
+.card h3{font-family:var(--f-display);font-weight:500;font-size:22px;letter-spacing:-.02em;margin:8px 0 0;line-height:1.15}
+.card p{margin:0;color:var(--ink-2);font-size:15px}
+.card ul{list-style:none;margin:auto 0 0;padding:14px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--ink-2)}
+.card li::before{content:"+ ";color:var(--accent);font-family:var(--f-mono)}
+@media (max-width:1060px){.svc{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.svc{grid-template-columns:1fr}}
+
+/* ---------- projects ---------- */
+.plist{display:flex;flex-direction:column;gap:20px}
+.proj{
+  border-radius:34px;padding:clamp(16px,2.2vw,28px);
+  display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,3vw,44px);align-items:center;
+  transition:background .35s, box-shadow .35s;
+}
+.proj:hover{background:var(--glass-strong)}
+.proj:nth-child(even) .pinfo{order:2}
+.pinfo{display:flex;flex-direction:column;gap:16px;min-width:0;padding:clamp(4px,1vw,12px)}
+.pmeta{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pmeta .num{font-family:var(--f-display);font-size:13px;letter-spacing:0;color:#fff;background:var(--ink);border-radius:var(--r-pill);padding:5px 11px}
+.pmeta .chip{border:1px solid var(--accent);color:var(--accent);border-radius:6px;padding:5px 9px}
+.pmeta .kind{border:1px solid var(--line);border-radius:6px;padding:5px 9px}
+.pinfo h3{font-family:var(--f-display);font-weight:500;font-size:clamp(24px,2.8vw,38px);line-height:1.05;letter-spacing:-.03em;margin:0;text-wrap:balance}
+.pinfo p{margin:0;color:var(--ink-2);max-width:52ch}
+.feat{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.feat li{font-size:13px;padding:7px 12px;border-radius:var(--r-pill);background:rgba(255,255,255,.75);border:1px solid rgba(16,18,24,.06)}
+.plink{display:inline-flex;align-items:center;gap:10px;font-weight:500;margin-top:4px}
+.plink i{font-style:normal;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff;transition:transform .35s, background .3s}
+.proj:hover .plink i{transform:rotate(45deg);background:var(--accent)}
+.pvis{min-width:0;position:relative}
+.pvis .shot{width:100%;border-radius:18px;display:block;box-shadow:0 30px 60px -30px rgba(20,24,44,.45)}
+.slot{border:1.5px dashed rgba(44,56,216,.45);background:rgba(255,255,255,.3)}
+.slot .pvis{display:grid;place-items:center;aspect-ratio:16/10;border-radius:18px;background:repeating-linear-gradient(135deg, rgba(44,56,216,.05) 0 10px, transparent 10px 20px)}
+.slot .plus{font-family:var(--f-serif);font-style:italic;font-size:clamp(40px,6vw,84px);color:var(--accent);line-height:1}
+@media (max-width:860px){
+  .proj{grid-template-columns:1fr}
+  .proj:nth-child(even) .pinfo{order:0}
+  .pvis{order:-1}
+}
+
+/* mock browser windows (drawn, not screenshots) */
+.mock{container-type:inline-size;width:100%;aspect-ratio:16/10;border-radius:18px;overflow:hidden;position:relative;box-shadow:0 34px 70px -34px rgba(20,24,44,.55), 0 0 0 1px rgba(16,18,24,.08);transform:perspective(1200px) rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.mbar{height:6.5cqw;display:flex;align-items:center;gap:1.1cqw;padding:0 2.4cqw;background:rgba(255,255,255,.92);border-bottom:1px solid rgba(16,18,24,.08)}
+.mbar i{width:1.5cqw;height:1.5cqw;border-radius:50%;background:#d6d8de}
+.mbar span{margin-left:2cqw;flex:1;max-width:46cqw;height:3.4cqw;border-radius:2cqw;background:#eef0f3;font-family:var(--f-mono);font-size:1.7cqw;color:#7a7f8c;display:flex;align-items:center;padding:0 1.6cqw;overflow:hidden;white-space:nowrap}
+.mbody{position:absolute;inset:6.5cqw 0 0 0;overflow:hidden}
+
+/* metal (графит, белый, оранжевый) */
+.m-metal .mbody{background:#ffffff;color:#17191c;font-family:var(--f-body);display:flex;flex-direction:column}
+.m-metal .mtop{background:#17191c;color:#fff;padding:2.4cqw 3.4cqw 3.4cqw}
+.m-metal .mnav{display:flex;align-items:center;gap:2.2cqw;font-size:1.6cqw;color:#a7adb6}
+.m-metal .mnav b{font-family:"Oswald",var(--f-display);font-weight:600;color:#fff;font-size:2.4cqw;letter-spacing:.04em;margin-right:auto}
+.m-metal .mnav b small{display:block;font-family:var(--f-body);font-size:1.1cqw;letter-spacing:.08em;color:#a7adb6;font-weight:400;text-transform:uppercase}
+.m-metal .mnav em{font-style:normal;color:#fff;font-weight:600}
+.m-metal .mhero{display:grid;grid-template-columns:1.15fr .85fr;gap:3cqw;margin-top:3.2cqw;align-items:center}
+.m-metal .eb{font-size:1.35cqw;letter-spacing:.14em;text-transform:uppercase;color:#a7adb6}
+.m-metal .rule{width:5cqw;height:.4cqw;background:#e2600f;margin:1.4cqw 0}
+.m-metal h5{font-family:"Oswald",var(--f-display);font-weight:600;text-transform:uppercase;font-size:4.6cqw;line-height:1.02;margin:0;letter-spacing:.01em}
+.m-metal .p{font-size:1.6cqw;line-height:1.4;color:#a7adb6;margin:1.4cqw 0 0}
+.m-metal .btns{display:flex;gap:1.4cqw;margin-top:2.2cqw}
+.m-metal .btns span{font-size:1.55cqw;padding:1.2cqw 2cqw;border-radius:.8cqw;background:#e2600f;color:#fff;font-weight:600}
+.m-metal .btns span+span{background:transparent;border:1px solid #5a5f67}
+.m-metal .calc{background:#fff;color:#17191c;border-radius:1.2cqw;padding:2cqw;display:flex;flex-direction:column;gap:1.2cqw;font-size:1.3cqw}
+.m-metal .calc label{display:flex;flex-direction:column;gap:.5cqw;color:#5b616a}
+.m-metal .calc i{display:block;height:3.4cqw;border:1px solid #e1e3e7;border-radius:.7cqw;font-style:normal;color:#17191c;padding:0 1cqw;line-height:3.4cqw;font-size:1.4cqw}
+.m-metal .calc b{font-family:"Oswald",var(--f-display);font-weight:600;font-size:3.6cqw;color:#e2600f;line-height:1}
+.m-metal .cats{background:#f2f3f5;flex:1;padding:2.4cqw 3.4cqw;display:grid;grid-template-columns:repeat(3,1fr);gap:1.6cqw;align-content:start}
+.m-metal .cats div{background:#fff;border:1px solid #e1e3e7;border-radius:1cqw;padding:1.4cqw;font-size:1.25cqw;color:#5b616a}
+.m-metal .cats b{display:block;font-family:"Oswald",var(--f-display);font-weight:600;text-transform:uppercase;font-size:1.9cqw;color:#17191c;margin-bottom:.4cqw}
+.m-metal .cats div::before{content:"";display:block;width:3cqw;height:.35cqw;background:#e2600f;margin-bottom:1cqw}
+
+/* balance */
+.m-bal .mbody{background:#0c0c0d;color:#ece6d8;font-family:var(--f-body)}
+.m-bal .bimg{position:absolute;inset:0;background:
+  radial-gradient(ellipse at 75% 35%, rgba(200,163,90,.28), transparent 55%),
+  linear-gradient(90deg, #0c0c0d 30%, rgba(12,12,13,.2) 100%),
+  repeating-linear-gradient(90deg, #1b1a19 0 4cqw, #232120 4cqw 4.4cqw)}
+.m-bal .bin{position:relative;padding:3cqw 4cqw}
+.m-bal .bnav{display:flex;gap:2.4cqw;font-size:1.55cqw;color:#9b958a;align-items:center}
+.m-bal .bnav b{font-family:var(--f-serif);font-style:italic;font-weight:600;font-size:3cqw;color:#c8a35a;margin-right:auto}
+.m-bal .eb{font-size:1.5cqw;letter-spacing:.14em;text-transform:uppercase;color:#c8a35a;margin-top:5.5cqw}
+.m-bal h5{font-family:var(--f-body);font-weight:600;font-size:4.6cqw;line-height:1.05;margin:1.4cqw 0 0;max-width:52cqw;letter-spacing:-.02em}
+.m-bal h5 em{font-family:var(--f-serif);font-style:italic;font-weight:500;color:#c8a35a;font-size:1.2em}
+.m-bal .btns{display:flex;gap:1.4cqw;margin-top:3cqw}
+.m-bal .btns span{font-size:1.6cqw;padding:1.3cqw 2.2cqw;border-radius:4cqw;background:#c8a35a;color:#0c0c0d;font-weight:600}
+.m-bal .btns span+span{background:transparent;border:1px solid #4a4438;color:#ece6d8}
+.m-bal .bst{display:flex;gap:5cqw;margin-top:4.4cqw}
+.m-bal .bst div{font-size:1.4cqw;color:#8d877b}
+.m-bal .bst b{display:block;font-family:var(--f-serif);font-style:italic;font-size:4.6cqw;color:#ece6d8;font-weight:500;line-height:1}
+
+/* salon */
+.m-sal .mbody{background:#f7f4ef;color:#2b2622;font-family:var(--f-body);display:grid;grid-template-columns:1fr .78fr}
+.m-sal .sl{padding:3cqw 2cqw 3cqw 4.4cqw;display:flex;flex-direction:column}
+.m-sal .snav{display:flex;gap:2.2cqw;font-size:1.5cqw;color:#8a7d70}
+.m-sal .sub{font-size:1.45cqw;color:#9a7b5f;letter-spacing:.06em;margin-top:5cqw}
+.m-sal h5{font-family:var(--f-serif);font-style:italic;font-weight:500;font-size:6.6cqw;line-height:.95;margin:1.4cqw 0;letter-spacing:-.01em}
+.m-sal .p{font-size:1.6cqw;line-height:1.45;color:#6b6058;margin:0;max-width:40cqw}
+.m-sal .btns{display:flex;gap:1.4cqw;margin-top:2.4cqw}
+.m-sal .btns span{font-size:1.55cqw;padding:1.2cqw 2.2cqw;border-radius:4cqw;background:#2b2622;color:#f7f4ef}
+.m-sal .btns span+span{background:transparent;border:1px solid #cfc4b6;color:#2b2622}
+.m-sal .sr{position:relative;background:linear-gradient(160deg,#e9e0d3,#d9cbb8);margin:3cqw 3cqw 3cqw 0;border-radius:20cqw 20cqw 1.6cqw 1.6cqw;overflow:hidden}
+.m-sal .sr::before{content:"";position:absolute;left:22%;right:22%;top:18%;bottom:-10%;border-radius:50% 50% 0 0;background:radial-gradient(circle at 50% 30%, #c9b29a 0 22%, transparent 23%), linear-gradient(#b89c80,#a3876d);opacity:.55}
+.m-sal .price{position:absolute;left:1.6cqw;right:1.6cqw;bottom:1.6cqw;background:rgba(247,244,239,.92);border-radius:1.2cqw;padding:1.2cqw 1.6cqw;font-size:1.4cqw;display:flex;flex-direction:column;gap:.6cqw}
+.m-sal .price div{display:flex;gap:.8cqw}
+.m-sal .price div::after{content:"";order:1;flex:1;border-bottom:1px dotted #b8aa98;margin-bottom:.5cqw}
+.m-sal .price b{order:2;font-weight:500}
+
+/* ---------- approach ---------- */
+.flex-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:stretch}
+.spec{border-radius:var(--r-card);padding:clamp(22px,3vw,36px);display:flex;flex-direction:column;gap:22px;min-width:0}
+.spec-top{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:14px}
+.looks{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.look{border-radius:18px;overflow:hidden;border:1px solid rgba(16,18,24,.08);background:var(--paper);display:flex;flex-direction:column}
+.look .sw{height:118px;display:flex;align-items:flex-end;padding:12px;font-size:44px;line-height:1}
+.look .meta{padding:12px;display:flex;flex-direction:column;gap:4px;font-size:13px}
+.look .meta b{font-weight:600}
+.look .meta span{color:var(--ink-3)}
+.look .chips{display:flex;gap:4px;padding:0 12px 12px}
+.look .chips i{width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(16,18,24,.12)}
+.lk1 .sw{background:#17191c;color:#e2600f;font-family:"Oswald",var(--f-display);font-weight:600}
+.lk2 .sw{background:#0c0c0d;color:#c8a35a;font-family:var(--f-serif);font-style:italic}
+.lk3 .sw{background:#f7f4ef;color:#2b2622;font-family:var(--f-serif);font-style:italic}
+.spec p{margin:0;color:var(--ink-2)}
+.spec p b{color:var(--ink);font-weight:600}
+.pr{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.pr div{border-radius:20px;padding:18px;background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.9);display:flex;flex-direction:column;gap:6px}
+.pr b{font-family:var(--f-display);font-weight:500;font-size:16px;letter-spacing:-.01em}
+.pr span{font-size:14px;color:var(--ink-2);line-height:1.5}
+.honest{border-radius:var(--r-card);padding:clamp(22px,3vw,36px);background:var(--ink);color:#fff;display:flex;flex-direction:column;justify-content:space-between;gap:24px;position:relative;overflow:hidden;min-width:0}
+.honest::after{content:"";position:absolute;width:280px;height:280px;border-radius:50%;right:-80px;top:-90px;background:radial-gradient(circle at 32% 28%, #e9ebff 0, #9aa2ff 20%, #4c58ea 48%, #1f2aa8 78%);opacity:.9}
+.honest .q{font-family:var(--f-serif);font-style:italic;font-size:clamp(28px,3.4vw,44px);line-height:1.08;margin:0;position:relative;z-index:1;max-width:16ch}
+.honest p{margin:0;color:rgba(255,255,255,.72);max-width:44ch;position:relative;z-index:1}
+.honest .mono{color:rgba(255,255,255,.6);position:relative;z-index:1}
+.steps{margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+.step{border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.step .n{font-family:var(--f-mono);font-size:12px;color:var(--accent)}
+.step b{font-family:var(--f-display);font-weight:500;font-size:18px;letter-spacing:-.01em}
+.step span{color:var(--ink-2);font-size:14.5px}
+@media (max-width:1000px){.flex-grid{grid-template-columns:1fr}.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.steps,.pr{grid-template-columns:1fr}.looks{grid-template-columns:1fr 1fr 1fr;gap:8px}.look .sw{height:84px;font-size:32px}.look .meta{padding:9px;font-size:12px}}
+
+/* ---------- faq ---------- */
+.faq{display:flex;flex-direction:column;gap:10px;max-width:900px;margin-inline:auto}
+.faq details{border-radius:26px;overflow:hidden}
+.faq summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:14px;padding:12px 12px 12px 22px;min-height:68px;font-weight:500;font-size:16.5px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .i{font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}
+.faq summary .pl{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .35s, background .3s;font-size:20px;font-weight:300;background:rgba(255,255,255,.6)}
+.faq details[open] .pl{transform:rotate(45deg);background:var(--ink);color:#fff;border-color:var(--ink)}
+.faq .ans{padding:0 70px 22px 80px;color:var(--ink-2);max-width:72ch}
+@media (max-width:560px){.faq summary{grid-template-columns:1fr 44px;padding-left:18px}.faq summary .i{display:none}.faq .ans{padding:0 18px 20px}}
+
+/* ---------- contact ---------- */
+.contact{border-radius:40px;padding:clamp(22px,4vw,52px);display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(24px,4vw,56px)}
+.contact .h2{font-size:clamp(34px,4.6vw,60px)}
+.clist{display:flex;flex-direction:column;gap:10px;margin-top:28px}
+.clist a,.clist div{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;border-radius:20px;background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.95);transition:background .3s}
+.clist a:hover{background:#fff}
+.clist .mono{flex:0 0 auto}
+.clist b{font-weight:500;overflow-wrap:anywhere;text-align:right}
+form{display:flex;flex-direction:column;gap:14px;min-width:0}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+form label{display:flex;flex-direction:column;gap:7px;min-width:0}
+form{position:relative}
+input,textarea{
+  font:inherit;color:var(--ink);width:100%;
+  background:rgba(255,255,255,.72);border:1px solid rgba(16,18,24,.1);border-radius:18px;padding:14px 16px;
+  transition:border-color .2s, background .2s;
+}
+input:focus,textarea:focus{outline:none;border-color:var(--accent);background:#fff}
+textarea{min-height:110px;resize:vertical}
+fieldset{border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:7px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{flex-direction:row}
+.chips input{position:absolute;opacity:0;width:1px;height:1px}
+.chips span{padding:10px 16px;border-radius:var(--r-pill);background:rgba(255,255,255,.72);border:1px solid rgba(16,18,24,.1);cursor:pointer;font-size:14px;transition:all .2s}
+.chips input:checked + span{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chips input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px}
+.out{border-radius:22px;padding:18px;background:#fff;border:1px solid var(--accent);display:flex;flex-direction:column;gap:12px}
+.out pre{margin:0;white-space:pre-wrap;font-family:var(--f-body);font-size:14px;color:var(--ink-2);user-select:all}
+.out .actions{justify-content:flex-start}
+.out .btn{height:48px;padding:0 20px;font-size:14px}
+.note{font-size:13px;color:var(--ink-3);margin:0}
+@media (max-width:900px){.contact{grid-template-columns:1fr}}
+@media (max-width:480px){.row2{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+footer{position:relative;z-index:1;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 28px);overflow:hidden}
+.sign{font-family:var(--f-serif);font-style:italic;font-weight:500;font-size:clamp(84px,21vw,330px);line-height:.85;letter-spacing:-.03em;text-align:center;margin:40px 0 12px;
+  background:linear-gradient(180deg,var(--ink) 30%, rgba(16,18,24,.12));-webkit-background-clip:text;background-clip:text;color:transparent}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:18px}
+
+/* ---------- form states ---------- */
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+.ferr{margin:0;color:#B4232A;font-size:14px}
+.sent{display:flex;gap:14px;align-items:center;border-radius:22px;padding:16px 18px;background:#fff;border:1px solid var(--accent)}
+.sent-ico{flex:0 0 auto;width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-size:18px}
+.sent div{display:flex;flex-direction:column}
+.sent span{color:var(--ink-2);font-size:14px}
+.sent[hidden]{display:none}
+#sendBtn[hidden]{display:none}
+button:disabled{opacity:.6;cursor:progress}
+
+/* ---------- footer grid ---------- */
+.fgrid{display:grid;grid-template-columns:1.1fr .7fr 1.2fr;gap:28px;padding-block:28px 32px;border-top:1px solid var(--line)}
+.fbrand{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.fbrand p{margin:0;color:var(--ink-2);max-width:30ch}
+.flogo{height:72px;padding:0 30px;font-size:24px}
+.fnav{display:flex;flex-direction:column;gap:8px}
+.fnav a{color:var(--ink-2);transition:color .2s;align-self:flex-start}
+.fnav a:hover{color:var(--accent)}
+.fcol{display:flex;flex-direction:column;gap:12px;min-width:0}
+.fcontacts{display:flex;flex-direction:column;gap:10px}
+.fbtn{display:flex;align-items:center;gap:14px;border-radius:22px;padding:10px 18px 10px 10px;min-width:0;transition:background .3s}
+a.fbtn:hover{background:var(--glass-strong)}
+.fbtn .fi{flex:0 0 auto;width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:16px;transition:background .3s}
+a.fbtn:hover .fi{background:var(--accent)}
+.fbtn > span:last-child{display:flex;flex-direction:column;font-weight:500;overflow-wrap:anywhere;min-width:0}
+.fbtn small{font-size:10px;color:var(--ink-3)}
+@media (max-width:860px){.fgrid{grid-template-columns:1fr 1fr}.fcol{grid-column:1/-1}}
+@media (max-width:480px){.fgrid{grid-template-columns:1fr}}
+
+/* блик под курсором на стеклянных карточках */
+.sheen:hover{background-image:radial-gradient(320px circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,.9), rgba(255,255,255,0) 70%)}
+.sheen:hover{border-color:#fff}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+<style>html,body{margin:0}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+
+
+<div class="scene" aria-hidden="true">
+  <div class="orb-p" data-depth="18" style="width:clamp(220px,32vw,460px);height:clamp(220px,32vw,460px);right:-8vw;top:8vh"><div class="orb"></div></div>
+  <div class="orb-p" data-depth="-26" style="width:clamp(120px,14vw,200px);height:clamp(120px,14vw,200px);left:-3vw;top:58vh"><div class="orb blue" style="animation-delay:-4s"></div></div>
+  <div class="orb-p" data-depth="10" style="width:clamp(70px,7vw,110px);height:clamp(70px,7vw,110px);left:38vw;top:82vh"><div class="orb" style="animation-delay:-8s"></div></div>
+</div>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="pill glass logo" href="#top" aria-label="Степан Семенюк, наверх">С<i>/</i>С</a>
+    <nav class="pill glass nav" aria-label="Разделы">
+      <a href="#services">Услуги</a><a href="#work">Проекты</a><a href="#approach">Подход</a><a href="#faq">Вопросы</a><a href="#contact">Контакты</a>
+    </nav>
+    <a class="pill glass cta magnetic" href="#contact"><span class="ico">↗</span>Обсудить проект</a>
+    <button class="pill glass menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mnav">Меню</button>
+  </div>
+</header>
+<nav class="mnav glass" id="mnav" hidden aria-label="Меню">
+  <a href="#services">Услуги</a><a href="#work">Проекты</a><a href="#approach">Подход</a><a href="#faq">Вопросы</a><a href="#contact">Контакты</a>
+</nav>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="hud">
+        <span class="mono">Степан Семенюк <span class="acc">/</span> веб-дизайн и сайты</span>
+        <span class="mono" aria-hidden="true">X <b id="cx">0000</b> · Y <b id="cy">0000</b></span>
+      </div>
+
+      <div class="stage">
+        <h1 class="title">
+          <span class="l1">Сайты</span>
+          <span class="l2">под <em>любую</em></span>
+          <span class="l3">нишу<span class="dot" style="display:inline">.</span></span>
+        </h1>
+
+        <div class="disk-p d1" data-depth="22"><div class="disk"></div></div>
+        <div class="disk-p d2" data-depth="-30"><div class="disk tint"></div></div>
+        <div class="disk-p d3" data-depth="14"><div class="disk"></div></div>
+
+        <div class="callout c1 mono"><span class="ln"></span><span class="box"><small>[ Дизайн ]</small>с нуля под нишу</span></div>
+        <div class="callout c2 mono"><span class="ln"></span><span class="box"><small>[ Адаптив ]</small>375 → 1920 px</span></div>
+        <div class="callout c3 left mono"><span class="ln"></span><span class="box"><small>[ В портфолио ]</small><span class="js-count">03</span> разные ниши</span></div>
+      </div>
+
+      <div class="mini-hud mono">
+        <span>Дизайн с нуля</span><span>375 → 1920 px</span><span><span class="js-count">03</span> ниши</span>
+      </div>
+
+      <div class="hero-foot">
+        <p class="lead">Меня зовут <b>Степан Семенюк</b>. Делаю сайты, веб-дизайн, Telegram-ботов и визитки. Я только начинаю, но мои работы уже совсем разные: приём металла, фитнес-клуб, мастер-парикмахер. Каждый проект собираю с нуля, чтобы вашим клиентам было удобно.</p>
+        <div class="actions">
+          <a class="btn glass magnetic" href="#work">Смотреть проекты</a>
+          <a class="btn btn-ink magnetic" href="#contact">Написать мне <span class="arr">↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="band glass" aria-label="Ниши">
+    <div class="track" id="track"></div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="sec" id="services">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="mono eyebrow">[ Услуги ]</span>
+          <h2 class="h2">Что я <em>делаю</em></h2>
+        </div>
+        <p>Четыре направления, которые закрывают присутствие бизнеса в сети: от одной страницы до бота, который принимает заявки.</p>
+      </div>
+      <div class="svc">
+        <article class="card glass">
+          <span class="tag mono">Web</span>
+          <div class="glyph"><svg viewBox="0 0 34 34" fill="none" stroke="#101218" stroke-width="1.6"><rect x="3" y="6" width="28" height="22" rx="4"/><path d="M3 12h28"/><circle cx="7" cy="9" r=".8" fill="#101218"/><circle cx="10" cy="9" r=".8" fill="#101218"/><path d="M8 18h10M8 22h6" stroke="#2C38D8"/></svg></div>
+          <h3>Сайты</h3>
+          <p>Лендинг, сайт-визитка или многостраничный сайт. Сразу под телефоны и компьютеры.</p>
+          <ul><li>Формы заявок</li><li>Прайсы и калькуляторы</li><li>Расписания, галереи, отзывы</li></ul>
+        </article>
+        <article class="card glass">
+          <span class="tag mono">UI</span>
+          <div class="glyph"><svg viewBox="0 0 34 34" fill="none" stroke="#101218" stroke-width="1.6"><circle cx="13" cy="14" r="8"/><circle cx="21" cy="20" r="8" stroke="#2C38D8"/><path d="M5 30h24"/></svg></div>
+          <h3>Веб-дизайн</h3>
+          <p>Стиль под нишу и вашу аудиторию: шрифты, цвета, макеты для телефона и компьютера.</p>
+          <ul><li>Дизайн с нуля</li><li>Мобильная версия</li><li>Правки до результата</li></ul>
+        </article>
+        <article class="card glass">
+          <span class="tag mono">Bot</span>
+          <div class="glyph"><svg viewBox="0 0 34 34" fill="none" stroke="#101218" stroke-width="1.6"><path d="M5 9a4 4 0 0 1 4-4h16a4 4 0 0 1 4 4v11a4 4 0 0 1-4 4H14l-6 5v-5H9a4 4 0 0 1-4-4z"/><path d="M11 14h12M11 18h7" stroke="#2C38D8"/></svg></div>
+          <h3>Telegram-боты</h3>
+          <p>Бот для записи, заявок, каталога или ответов на частые вопросы. Заявки приходят вам в Telegram.</p>
+          <ul><li>Запись и заявки</li><li>Каталог и прайс</li><li>Ответы на частые вопросы</li></ul>
+        </article>
+        <article class="card glass">
+          <span class="tag mono">Card</span>
+          <div class="glyph"><svg viewBox="0 0 34 34" fill="none" stroke="#101218" stroke-width="1.6"><rect x="4" y="8" width="26" height="18" rx="3"/><circle cx="12" cy="16" r="3" stroke="#2C38D8"/><path d="M18 14h7M18 18h5M9 22h16"/></svg></div>
+          <h3>Визитки</h3>
+          <p>Сайт-визитка о вас и вашем деле: кто вы, услуги, цены, контакты. Ссылку удобно отправить или поставить в QR-код.</p>
+          <ul><li>Одна страница</li><li>Кнопки мессенджеров</li><li>QR-код на ссылку</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="sec" id="work" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="mono eyebrow">[ Портфолио ]</span>
+          <h2 class="h2">Мои <em>проекты</em><sup class="js-count">03</sup></h2>
+        </div>
+        <p>Три ниши, три разных дизайна. Нажмите на проект, чтобы открыть сайт.</p>
+      </div>
+      <div class="plist" id="plist"></div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="sec" id="approach" style="padding-top:0">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <span class="mono eyebrow">[ Подход ]</span>
+          <h2 class="h2">Не по <em>шаблону</em></h2>
+        </div>
+        <p>Металлоприёму нужен быстрый прайс и калькулятор. Фитнес-клубу нужны акции и расписание. Мастеру нужны дипломы и запись. Сначала разбираюсь, что важно вашим клиентам, потом рисую.</p>
+      </div>
+
+      <div class="flex-grid">
+        <div class="spec glass">
+          <div class="spec-top"><span class="mono">Один дизайнер / три стиля</span><span class="mono acc">Ниша → стиль</span></div>
+          <div class="looks">
+            <div class="look lk1"><div class="sw">Аа</div><div class="meta"><b>Графит и оранжевый</b><span>Приём металла</span></div><div class="chips"><i style="background:#17191c"></i><i style="background:#e2600f"></i><i style="background:#f2f3f5"></i></div></div>
+            <div class="look lk2"><div class="sw">Аа</div><div class="meta"><b>Тёмный с золотом</b><span>Фитнес-клуб</span></div><div class="chips"><i style="background:#0c0c0d"></i><i style="background:#c8a35a"></i><i style="background:#ece6d8"></i></div></div>
+            <div class="look lk3"><div class="sw">Аа</div><div class="meta"><b>Тёплый кремовый</b><span>Парикмахер</span></div><div class="chips"><i style="background:#f7f4ef"></i><i style="background:#9a7b5f"></i><i style="background:#2b2622"></i></div></div>
+          </div>
+          <div class="pr">
+            <div><b>Удобно с телефона</b><span>Большинство клиентов откроют сайт со смартфона. Проверяю каждый экран.</span></div>
+            <div><b>Понятно сразу</b><span>Кто вы, что предлагаете и как связаться. Видно на первом экране.</span></div>
+            <div><b>Быстро грузится</b><span>Лёгкий код без лишнего, страница открывается даже на слабом интернете.</span></div>
+            <div><b>Легко дополнять</b><span>Цены, фото и тексты можно обновлять, когда меняется бизнес.</span></div>
+          </div>
+        </div>
+
+        <div class="honest">
+          <span class="mono">[ Честно ]</span>
+          <p class="q">Я только начинаю. Поэтому ваш проект получит всё моё внимание.</p>
+          <p>Пока у меня нет потока заказов, я не делаю сайты на конвейере. Обсуждаю детали, показываю промежуточные версии и вношу правки, пока результат не устроит вас.</p>
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="step glass"><span class="n">ШАГ 1</span><b>Заявка</b><span>Пишете, чем занимаетесь и что нужно: сайт, дизайн, бот или визитка.</span></div>
+        <div class="step glass"><span class="n">ШАГ 2</span><b>Обсуждение</b><span>Разбираем ваших клиентов и задачи. Называю цену и срок до начала работы.</span></div>
+        <div class="step glass"><span class="n">ШАГ 3</span><b>Дизайн и сборка</b><span>Рисую стиль под нишу, собираю сайт, показываю по ходу работы.</span></div>
+        <div class="step glass"><span class="n">ШАГ 4</span><b>Запуск</b><span>Публикую сайт, проверяю на телефонах и компьютерах, объясняю, как обновлять.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec" id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="head" style="justify-content:center;text-align:center">
+        <div>
+          <span class="mono eyebrow">[ Вопросы ]</span>
+          <h2 class="h2">Отвечу <em>заранее</em></h2>
+        </div>
+      </div>
+      <div class="faq">
+        <details class="glass" open><summary><span class="i">01</span><span>Сколько стоит сайт?</span><span class="pl">+</span></summary><div class="ans">Зависит от объёма: визитка, лендинг или многостраничный сайт. Напишите, что нужно, и я назову цену и срок до начала работы.</div></details>
+        <details class="glass"><summary><span class="i">02</span><span>Сделаете сайт для моей ниши?</span><span class="pl">+</span></summary><div class="ans">Да. Ниша влияет на структуру и стиль сайта, а не на то, возьмусь ли я. В портфолио уже есть приём металла, фитнес и бьюти.</div></details>
+        <details class="glass"><summary><span class="i">03</span><span>Сайт будет нормально работать на телефоне?</span><span class="pl">+</span></summary><div class="ans">Да. Каждый сайт собираю сразу под телефоны и компьютеры и проверяю на экранах разной ширины.</div></details>
+        <details class="glass"><summary><span class="i">04</span><span>Можно потом поменять цены и тексты?</span><span class="pl">+</span></summary><div class="ans">Да. Покажу, как это сделать, или внесу правки сам.</div></details>
+        <details class="glass"><summary><span class="i">05</span><span>Зачем мне Telegram-бот?</span><span class="pl">+</span></summary><div class="ans">Если вам часто пишут с одинаковыми вопросами или хотят записаться, бот ответит сам и пришлёт заявку вам. Обсудим, нужен ли он именно вашему делу.</div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="sec" id="contact" style="padding-top:0">
+    <div class="wrap">
+      <div class="contact glass">
+        <div>
+          <span class="mono eyebrow">[ Контакты ]</span>
+          <h2 class="h2">Сделаем ваш <em>сайт</em></h2>
+          <p style="color:var(--ink-2);max-width:40ch;margin:18px 0 0">Расскажите о своём деле. Отвечу, подскажу формат и назову стоимость.</p>
+          <div class="clist" id="clist"></div>
+        </div>
+        <form id="brief" novalidate>
+          <div class="row2">
+            <label for="f-name"><span class="mono">Имя</span><input id="f-name" name="name" autocomplete="name" placeholder="Как к вам обращаться"></label>
+            <label for="f-niche"><span class="mono">Ниша</span><input id="f-niche" name="niche" placeholder="Например, кофейня"></label>
+          </div>
+          <fieldset>
+            <legend class="mono" style="margin-bottom:7px">Что нужно</legend>
+            <div class="chips">
+              <label><input type="checkbox" id="f-s1" value="Сайт" checked><span>Сайт</span></label>
+              <label><input type="checkbox" id="f-s2" value="Веб-дизайн"><span>Веб-дизайн</span></label>
+              <label><input type="checkbox" id="f-s3" value="Telegram-бот"><span>Telegram-бот</span></label>
+              <label><input type="checkbox" id="f-s4" value="Визитка"><span>Визитка</span></label>
+            </div>
+          </fieldset>
+          <label for="f-contact"><span class="mono">Как с вами связаться</span><input id="f-contact" name="contact" placeholder="Telegram, телефон или почта"></label>
+          <label for="f-msg"><span class="mono">Пара слов о задаче</span><textarea id="f-msg" name="msg" placeholder="Что хотите получить, есть ли пример сайта, который нравится"></textarea></label>
+          <label class="hp" aria-hidden="true">Сайт<input id="f-website" name="website" tabindex="-1" autocomplete="off"></label>
+          <p class="ferr" id="ferr" role="alert" hidden></p>
+          <button class="btn btn-ink magnetic" type="submit" id="sendBtn" style="align-self:flex-start">Отправить заявку <span class="arr">↗</span></button>
+          <div class="sent" id="sent" hidden>
+            <span class="sent-ico">✓</span>
+            <div><b>Заявка отправлена</b><span>Степан получил её в Telegram и скоро свяжется с вами.</span></div>
+          </div>
+          <div class="out" id="out" hidden>
+            <span class="mono acc" id="outTitle">Заявка готова</span>
+            <pre id="outText"></pre>
+            <div class="actions">
+              <button class="btn btn-ink" type="button" id="copyBtn">Скопировать</button>
+              <a class="btn glass" id="tgBtn" href="#" target="_blank" rel="noopener">Открыть Telegram ↗</a>
+            </div>
+            <p class="note" id="outNote">Скопируйте текст и отправьте мне в Telegram.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="sign" aria-hidden="true">Семенюк</div>
+    <div class="fgrid">
+      <div class="fbrand">
+        <a class="pill glass logo flogo" href="#top" aria-label="Степан Семенюк, наверх">С<i>/</i>С</a>
+        <p>Сайты, веб-дизайн, Telegram-боты и визитки под любую нишу.</p>
+      </div>
+      <nav class="fnav" aria-label="Разделы в подвале">
+        <span class="mono">Разделы</span>
+        <a href="#services">Услуги</a><a href="#work">Проекты</a><a href="#approach">Подход</a><a href="#faq">Вопросы</a><a href="#contact">Заявка</a>
+      </nav>
+      <div class="fcol">
+        <span class="mono">Связаться</span>
+        <div class="fcontacts" id="fcontacts"></div>
+      </div>
+    </div>
+    <div class="foot">
+      <span class="mono">© <span id="yr">2026</span> Степан Семенюк</span>
+      <span class="mono">Сайты · Веб-дизайн · Telegram-боты · Визитки</span>
+      <a class="mono" href="#top">Наверх ↑</a>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+/* =========================================================
+   НАСТРОЙКИ. Меняйте здесь.
+   ========================================================= */
+
+// Контакты. Пустую строку можно оставить, тогда пункт не покажется.
+const CONTACTS = {
+  telegram: "eternal_larp",             // ← ваш ник в Telegram без @
+  vk: "https://vk.ru/id754104264",      // ← ссылка на вашу страницу ВКонтакте
+  bot: "",                              // ← ник бота заявок без @, например "stepan_zayavki_bot"
+  phone: "",                            // ← например "+7 900 000-00-00"
+  email: ""                             // ← почта
+};
+
+
+// Адрес бота заявок (Cloudflare Worker), например "https://stepan-bot.xxx.workers.dev/lead".
+// Пока пусто, форма собирает текст заявки для отправки вручную.
+const LEAD_ENDPOINT = "";
+
+// Проекты. Чтобы добавить новый, скопируйте объект и поменяйте поля.
+// look: "metal" | "balance" | "salon" — нарисованное превью.
+// Для нового проекта можно указать image: "img/screen.jpg" (скриншот) вместо look.
+const PROJECTS = [
+  {
+    niche: "Приём металлолома",
+    kind: "Демо-шаблон",
+    title: "Металлоприём «Шаблон»",
+    url: "https://oneiric-codus.github.io/shablon-metall/",
+    desc: "Сайт для пункта приёма металла. Клиент прямо на первом экране считает, сколько получит, смотрит цены за килограмм и заказывает вывоз без лишних звонков.",
+    features: ["Калькулятор на первом экране", "Прайс за 1 кг", "Справочник по металлам", "Правила приёма", "Заявка на вывоз"],
+    look: "metal"
+  },
+  {
+    niche: "Фитнес-клуб",
+    kind: "Многостраничный",
+    title: "Фитнес-клуб «Баланс»",
+    url: "https://oneiric-codus.github.io/balance-gold-demo/",
+    desc: "Сайт клуба в Перми: акции, направления, расписание мини-групп, результаты клиентов и отзывы. Запись на пробную тренировку в один клик.",
+    features: ["Акции и цены", "Расписание", "Результаты клиентов", "Отзывы с Яндекс Карт", "Онлайн-запись"],
+    look: "balance"
+  },
+  {
+    niche: "Парикмахер-стилист",
+    kind: "Сайт-визитка",
+    title: "Светлана Семенюк",
+    url: "https://oneiric-codus.github.io/svetlana-site/",
+    desc: "Визитка мастера с тридцатилетним стажем: история, прайс по длине волос, галерея дипломов и быстрые кнопки для записи.",
+    features: ["Прайс S / M / L", "Галерея дипломов", "О мастере", "Telegram, VK, MAX"],
+    look: "salon"
+  }
+];
+
+// Ниши для бегущей строки (уже сделанные берутся из проектов).
+const NEXT_NICHES = ["Кофейня", "Автосервис", "Стоматология", "Ремонт квартир", "Школа танцев", "Юрист", "Цветочный", "Барбершоп"];
+
+/* ========================================================= */
+
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const pad = n => String(n).padStart(2, "0");
+const host = u => { try { const x = new URL(u); return (x.hostname + x.pathname).replace(/\/$/, ""); } catch (e) { return u; } };
+
+const ICON_TG = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M21.4 4.3 2.9 11.4c-1.2.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.5-1.5ZM8.9 14.1l9.6-6.1c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.6-4.9Z"/></svg>`;
+const ICON_VK = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12.8 18C6.3 18 2.6 13.5 2.4 6h3.3c.1 5.5 2.5 7.8 4.4 8.3V6h3.1v4.7c1.9-.2 3.9-2.4 4.5-4.7h3.1c-.5 2.9-2.6 5-4.1 5.9 1.5.7 3.9 2.6 4.8 6.1h-3.4c-.7-2.3-2.5-4.1-4.9-4.3V18h-.4Z"/></svg>`;
+
+const MOCKS = {
+  metal: p => `
+    <div class="mock m-metal"><div class="mbar"><i></i><i></i><i></i><span>${esc(host(p.url))}</span></div>
+      <div class="mbody">
+        <div class="mtop">
+          <div class="mnav"><b>ШАБЛОН<small>приём металлолома</small></b><span>Цены</span><span>Калькулятор</span><span>Справочник</span><em>+7 (000) 000-00-00</em></div>
+          <div class="mhero">
+            <div><div class="eb">Пункт приёма металлолома</div><div class="rule"></div><h5>Сдайте металл по честной цене</h5>
+              <p class="p">Цветной и чёрный лом. Взвешиваем при вас, платим сразу.</p>
+              <div class="btns"><span>Смотреть цены</span><span>Как нас найти</span></div></div>
+            <div class="calc"><label>Что сдаёте<i>Медь</i></label><label>Вес, кг<i>25</i></label><span>Примерно получите</span><b>0 ₽</b></div>
+          </div>
+        </div>
+        <div class="cats"><div><b>Цветные</b>Медь, латунь, алюминий</div><div><b>Чёрный</b>Лом, чугун, трубы</div><div><b>Двигатели и АКБ</b>Электродвигатели</div></div>
+      </div></div>`,
+  balance: p => `
+    <div class="mock m-bal"><div class="mbar"><i></i><i></i><i></i><span>${esc(host(p.url))}</span></div>
+      <div class="mbody"><div class="bimg"></div><div class="bin">
+        <div class="bnav"><b>Баланс</b><span>О клубе</span><span>Тренировки</span><span>Цены</span><span>Контакты</span></div>
+        <div class="eb">Фитнес-клуб · Гайва, Пермь</div>
+        <h5>Фитнес-клуб на Гайве <em>«Баланс»</em></h5>
+        <div class="btns"><span>Пробная за 300 ₽</span><span>Цены и абонементы</span></div>
+        <div class="bst"><div><b>7</b>лет на Гайве</div><div><b>4,8</b>на Яндекс Картах</div><div><b>20+</b>направлений</div></div>
+      </div></div></div>`,
+  salon: p => `
+    <div class="mock m-sal"><div class="mbar"><i></i><i></i><i></i><span>${esc(host(p.url))}</span></div>
+      <div class="mbody">
+        <div class="sl">
+          <div class="snav"><span>Обо мне</span><span>Услуги и цены</span><span>Дипломы</span><span>Контакты</span></div>
+          <div class="sub">ДОМ D'AJOUR · ПЕРМЬ</div>
+          <h5>Светлана Семенюк</h5>
+          <p class="p">Стилист по волосам, парикмахер-модельер. Тридцать лет в профессии.</p>
+          <div class="btns"><span>Записаться</span><span>Цены</span></div>
+        </div>
+        <div class="sr"><div class="price"><div>Стрижка S<b>2 200</b></div><div>Окрашивание M<b>4 500</b></div><div>Балаяж L<b>от 10 000</b></div></div></div>
+      </div></div>`
+};
+
+function projectCard(p, i) {
+  const vis = p.image
+    ? `<img class="shot" src="${esc(p.image)}" alt="Скриншот сайта ${esc(p.title)}" loading="lazy">`
+    : (MOCKS[p.look] ? MOCKS[p.look](p) : `<div class="mock"><div class="mbar"><i></i><i></i><i></i><span>${esc(host(p.url))}</span></div></div>`);
+  return `
+  <a class="proj glass" href="${esc(p.url)}" target="_blank" rel="noopener" data-cursor="Открыть ↗">
+    <div class="pinfo">
+      <div class="pmeta mono"><span class="num">${pad(i + 1)}</span><span class="chip">${esc(p.niche)}</span><span class="kind">${esc(p.kind || "")}</span></div>
+      <h3>${esc(p.title)}</h3>
+      <p>${esc(p.desc)}</p>
+      <ul class="feat">${(p.features || []).map(f => `<li>${esc(f)}</li>`).join("")}</ul>
+      <span class="plink">Открыть сайт <i>↗</i></span>
+    </div>
+    <div class="pvis">${vis}</div>
+  </a>`;
+}
+
+function render() {
+  const n = PROJECTS.length;
+  $("#plist").innerHTML = PROJECTS.map(projectCard).join("") + `
+    <a class="proj glass slot" href="#contact" data-cursor="Написать ↗">
+      <div class="pinfo">
+        <div class="pmeta mono"><span class="num">${pad(n + 1)}</span><span class="chip">Ваша ниша</span></div>
+        <h3>Здесь может быть ваш проект</h3>
+        <p>Расскажите о своём деле, и следующий сайт в этом списке будет вашим.</p>
+        <span class="plink">Обсудить <i>↗</i></span>
+      </div>
+      <div class="pvis"><span class="plus">ваш сайт</span></div>
+    </a>`;
+  document.querySelectorAll(".js-count").forEach(el => el.textContent = pad(n));
+
+  const done = PROJECTS.map(p => `<span class="done">${esc(p.niche)}</span>`).join("");
+  const next = NEXT_NICHES.map(x => `<span class="next">${esc(x)}</span>`).join("");
+  const once = done + next + `<span class="you">ваша ниша →</span>`;
+  $("#track").innerHTML = once + once;
+
+  const rows = [], foot = [];
+  if (CONTACTS.telegram) {
+    rows.push(`<a href="https://t.me/${esc(CONTACTS.telegram)}" target="_blank" rel="noopener"><span class="mono">Telegram</span><b>@${esc(CONTACTS.telegram)}</b></a>`);
+    foot.push(`<a class="fbtn glass" href="https://t.me/${esc(CONTACTS.telegram)}" target="_blank" rel="noopener"><span class="fi">${ICON_TG}</span><span><small class="mono">Telegram</small>@${esc(CONTACTS.telegram)}</span></a>`);
+  }
+  if (CONTACTS.vk) {
+    const vkName = CONTACTS.vk.replace(/^https?:\/\/(www\.)?/, "");
+    rows.push(`<a href="${esc(CONTACTS.vk)}" target="_blank" rel="noopener"><span class="mono">ВКонтакте</span><b>${esc(vkName)}</b></a>`);
+    foot.push(`<a class="fbtn glass" href="${esc(CONTACTS.vk)}" target="_blank" rel="noopener"><span class="fi">${ICON_VK}</span><span><small class="mono">ВКонтакте</small>${esc(vkName)}</span></a>`);
+  }
+  if (CONTACTS.bot) {
+    rows.push(`<a href="https://t.me/${esc(CONTACTS.bot)}" target="_blank" rel="noopener"><span class="mono">Бот заявок</span><b>@${esc(CONTACTS.bot)}</b></a>`);
+    foot.push(`<a class="fbtn glass" href="https://t.me/${esc(CONTACTS.bot)}" target="_blank" rel="noopener"><span class="fi">${ICON_TG}</span><span><small class="mono">Бот заявок</small>@${esc(CONTACTS.bot)}</span></a>`);
+  }
+  if (CONTACTS.phone) {
+    rows.push(`<div><span class="mono">Телефон</span><b>${esc(CONTACTS.phone)}</b></div>`);
+    foot.push(`<div class="fbtn glass"><span class="fi">☎</span><span><small class="mono">Телефон</small>${esc(CONTACTS.phone)}</span></div>`);
+  }
+  if (CONTACTS.email) {
+    rows.push(`<div><span class="mono">Почта</span><b>${esc(CONTACTS.email)}</b></div>`);
+    foot.push(`<div class="fbtn glass"><span class="fi">@</span><span><small class="mono">Почта</small>${esc(CONTACTS.email)}</span></div>`);
+  }
+  $("#clist").innerHTML = rows.join("");
+  $("#fcontacts").innerHTML = foot.join("");
+  $("#tgBtn").href = CONTACTS.telegram ? "https://t.me/" + CONTACTS.telegram : "#contact";
+  $("#yr").textContent = new Date().getFullYear();
+}
+render();
+
+/* ---------- mobile menu ---------- */
+const menuBtn = $("#menuBtn"), mnav = $("#mnav");
+menuBtn.addEventListener("click", () => {
+  const open = mnav.hidden;
+  mnav.hidden = !open;
+  menuBtn.setAttribute("aria-expanded", String(open));
+  menuBtn.textContent = open ? "Закрыть" : "Меню";
+});
+mnav.addEventListener("click", e => { if (e.target.closest("a")) { mnav.hidden = true; menuBtn.setAttribute("aria-expanded", "false"); menuBtn.textContent = "Меню"; } });
+
+/* ---------- brief form ---------- */
+let briefText = "";
+const showErr = t => { const el = $("#ferr"); el.textContent = t; el.hidden = !t; };
+function showManual(reason) {
+  $("#outTitle").textContent = reason ? "Не получилось отправить автоматически" : "Заявка готова";
+  $("#outNote").textContent = "Скопируйте текст и отправьте мне в Telegram.";
+  $("#outText").textContent = briefText;
+  $("#out").hidden = false;
+  $("#copyBtn").textContent = "Скопировать";
+}
+$("#brief").addEventListener("submit", async e => {
+  e.preventDefault();
+  const v = id => $(id).value.trim();
+  const needs = [...document.querySelectorAll(".chips input:checked")].map(i => i.value);
+  const data = { name: v("#f-name"), niche: v("#f-niche"), needs, contact: v("#f-contact"), msg: v("#f-msg"), website: v("#f-website") };
+  if (!data.contact) { showErr("Укажите, как с вами связаться: Telegram, телефон или почту."); $("#f-contact").focus(); return; }
+  showErr("");
+  briefText = [
+    "Здравствуйте, Степан!",
+    data.name && `Меня зовут: ${data.name}`,
+    data.niche && `Ниша: ${data.niche}`,
+    needs.length && `Нужно: ${needs.join(", ")}`,
+    data.msg && `Задача: ${data.msg}`,
+    `Связь: ${data.contact}`
+  ].filter(Boolean).join("\n");
+
+  if (!LEAD_ENDPOINT) { showManual(false); return; }
+
+  const btn = $("#sendBtn"), label = btn.innerHTML;
+  btn.disabled = true; btn.textContent = "Отправляю…";
+  try {
+    const r = await fetch(LEAD_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok || !j.ok) throw new Error("send");
+    $("#brief").reset();
+    $("#out").hidden = true;
+    $("#sent").hidden = false;
+    btn.hidden = true;
+  } catch (err) {
+    showManual(true);
+  } finally {
+    btn.disabled = false; btn.innerHTML = label;
+  }
+});
+$("#copyBtn").addEventListener("click", () => {
+  const btn = $("#copyBtn");
+  const fallback = () => {
+    const r = document.createRange(); r.selectNodeContents($("#outText"));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    btn.textContent = "Выделено, нажмите Ctrl+C";
+  };
+  try {
+    navigator.clipboard.writeText(briefText).then(() => btn.textContent = "Скопировано", fallback);
+  } catch (e) { fallback(); }
+});
+
+/* ---------- motion: шары и интерфейс реагируют на курсор ----------
+   Один цикл анимации, который засыпает, когда мышка стоит. */
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+const cx = $("#cx"), cy = $("#cy");
+const balls = [...document.querySelectorAll("[data-depth]")];
+const shiny = [...document.querySelectorAll(".orb, .disk")];
+
+let mx = innerWidth / 2, my = innerHeight / 2, px = 0, py = 0, lastMove = 0, moved = false, running = false;
+
+function frame() {
+  const now = performance.now();
+  if (moved) {
+    moved = false;
+    cx.textContent = String(Math.round(mx)).padStart(4, "0");
+    cy.textContent = String(Math.round(my + scrollY)).padStart(4, "0");
+  }
+  const tx = mx / innerWidth - .5, ty = my / innerHeight - .5;
+  px += (tx - px) * .07; py += (ty - py) * .07;
+  for (const el of balls) {
+    const d = +el.dataset.depth * 2.6;
+    el.style.transform = `translate3d(${(px * d).toFixed(1)}px,${(py * d).toFixed(1)}px,0)`;
+  }
+  // блик на шарах смещается в сторону курсора, как от источника света
+  const hx = (30 + px * 36).toFixed(1) + "%", hy = (26 + py * 36).toFixed(1) + "%";
+  for (const el of shiny) { el.style.setProperty("--hx", hx); el.style.setProperty("--hy", hy); }
+
+  if (Math.abs(tx - px) + Math.abs(ty - py) > .0008 || now - lastMove < 120) requestAnimationFrame(frame);
+  else running = false;
+}
+
+if (!reduce) {
+  addEventListener("pointermove", e => {
+    mx = e.clientX; my = e.clientY; lastMove = performance.now(); moved = true;
+    if (!running) { running = true; requestAnimationFrame(frame); }
+  }, { passive: true });
+}
+
+if (fine && !reduce) {
+  // мягкий блик на стеклянных карточках под курсором
+  document.querySelectorAll(".card, .proj, .step, .faq details, .fbtn, .clist a, .spec").forEach(el => {
+    el.classList.add("sheen");
+    let r = null, raf = 0, ex = 0, ey = 0;
+    el.addEventListener("pointerenter", () => { r = el.getBoundingClientRect(); });
+    el.addEventListener("pointermove", e => {
+      ex = e.clientX; ey = e.clientY;
+      if (raf || !r) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        el.style.setProperty("--gx", (ex - r.left) + "px");
+        el.style.setProperty("--gy", (ey - r.top) + "px");
+      });
+    }, { passive: true });
+    el.addEventListener("pointerleave", () => { r = null; });
+  });
+
+  // наклон превью проекта
+  document.querySelectorAll(".proj").forEach(card => {
+    const m = card.querySelector(".mock"); if (!m) return;
+    let r = null, raf = 0, ex = 0, ey = 0;
+    card.addEventListener("pointerenter", () => { r = card.getBoundingClientRect(); });
+    card.addEventListener("pointermove", e => {
+      ex = e.clientX; ey = e.clientY;
+      if (raf || !r) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        m.style.setProperty("--ry", ((ex - r.left) / r.width - .5) * 8 + "deg");
+        m.style.setProperty("--rx", -((ey - r.top) / r.height - .5) * 6 + "deg");
+      });
+    }, { passive: true });
+    card.addEventListener("pointerleave", () => { r = null; m.style.setProperty("--ry", "0deg"); m.style.setProperty("--rx", "0deg"); });
+  });
+
+  // «магнитные» кнопки
+  document.querySelectorAll(".magnetic").forEach(el => {
+    let r = null;
+    el.addEventListener("pointerenter", () => { r = el.getBoundingClientRect(); });
+    el.addEventListener("pointermove", e => {
+      if (!r) return;
+      el.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .22}px, ${(e.clientY - r.top - r.height / 2) * .3}px)`;
+    }, { passive: true });
+    el.addEventListener("pointerleave", () => { r = null; el.style.transform = ""; });
+  });
+}
+</script>
+
+</body>
+</html>
