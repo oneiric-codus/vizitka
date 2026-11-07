@@ -78,7 +78,6 @@ img{max-width:100%}
   width:100%;height:100%;border-radius:50%;
   background:radial-gradient(circle at var(--hx,32%) var(--hy,28%), #ffffff 0, #eef0f4 14%, #c3c8d2 42%, #8d93a2 66%, #b9bec9 84%, #eceef2 100%);
   box-shadow:inset -20px -30px 60px rgba(70,76,92,.35), 0 40px 80px -30px rgba(30,34,50,.35);
-  animation:float 14s ease-in-out infinite;
 }
 .orb.blue{background:radial-gradient(circle at var(--hx,32%) var(--hy,28%), #e9ebff 0, #9aa2ff 20%, #4c58ea 48%, #1f2aa8 78%, #6c76f0 100%)}
 .orb.soft{filter:blur(28px);opacity:.55}
@@ -183,14 +182,29 @@ section{position:relative}
   .callout{display:none}
   .hero-foot{grid-template-columns:1fr;margin-top:40px}
   .actions{justify-content:flex-start}
-  .mini-hud{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
-  .mini-hud span span{border:0;padding:0;background:none}
-  .mini-hud > span{border:1px solid var(--accent);border-radius:6px;padding:6px 9px;background:rgba(255,255,255,.7);color:var(--ink)}
+  .mini-hud{display:grid;grid-template-columns:1fr;gap:8px;margin-top:28px}
+  .mh{display:flex;align-items:center;gap:12px;border:1px solid var(--accent);border-radius:6px;padding:10px 12px;background:rgba(255,255,255,.8);color:var(--ink)}
+  .mh::before{content:"";flex:0 0 auto;width:7px;height:7px;background:var(--accent)}
+  .mh small{color:var(--accent);font-size:inherit;min-width:12.5ch}
   .title .l2{padding-left:0}
 }
 @media (max-width:480px){
   .hero{padding-top:calc(env(safe-area-inset-top,0px) + 100px)}
   .btn{height:54px;padding:0 22px;flex:1 1 auto;justify-content:center}
+}
+
+/* ---------- производительность ---------- */
+/* Блоки ниже первого экрана не отрисовываются, пока до них не доскроллили. */
+#services,#work,#approach,#faq{content-visibility:auto;contain-intrinsic-size:auto 1200px}
+.band{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:rgba(255,255,255,.72)!important}
+/* На телефонах и планшетах размытие стекла заменено плотной полупрозрачной заливкой:
+   выглядит почти так же, но не грузит видеокарту при прокрутке. */
+@media (max-width:900px), (hover:none){
+  .glass,.disk{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  .glass{background:rgba(255,255,255,.8)}
+  .disk{background:radial-gradient(circle at 30% 24%, #fff 0, rgba(240,242,247,.95) 40%, rgba(214,218,228,.9) 78%, #fff 100%)}
+  .disk.tint{background:radial-gradient(circle at 30% 24%, #fff 0, rgba(214,218,255,.95) 40%, rgba(140,150,240,.85) 80%, #fff 100%)}
+  .mock{transform:none!important;transition:none}
 }
 
 /* ---------- телефон: декор не перекрывает текст ---------- */
@@ -513,7 +527,9 @@ a.fbtn:hover .fi{background:var(--accent)}
       </div>
 
       <div class="mini-hud mono">
-        <span>Дизайн с нуля</span><span>375 → 1920 px</span><span><span class="js-count">03</span> ниши</span>
+        <div class="mh"><small>[ Дизайн ]</small><span>с нуля под нишу</span></div>
+        <div class="mh"><small>[ Адаптив ]</small><span>375 → 1920 px</span></div>
+        <div class="mh"><small>[ В портфолио ]</small><span><span class="js-count">03</span> разные ниши</span></div>
       </div>
 
       <div class="hero-foot">
