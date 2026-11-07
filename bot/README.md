@@ -20,25 +20,17 @@
 2. **Workers & Pages → Create → Create Worker**. Назовите, например, `stepan-bot`, нажмите **Deploy**.
 3. Нажмите **Edit code**, удалите всё и вставьте содержимое файла `worker.js`. Нажмите **Deploy**.
 
-## 3. Добавьте настройки
+## 3. Добавьте токен
 
-В Worker откройте **Settings → Variables and Secrets** и добавьте:
-
-| Имя | Тип | Значение |
-|---|---|---|
-| `BOT_TOKEN` | Secret | токен от BotFather |
-| `WEBHOOK_SECRET` | Secret | придумайте 15–20 латинских букв и цифр, например `k8Hq2Lm9xR4tP1z` |
-| `ALLOWED_ORIGIN` | Text | `https://oneiric-codus.github.io` |
-| `SITE_URL` | Text | `https://oneiric-codus.github.io/vizitka/` |
-
-Нажмите **Deploy**.
+В Worker откройте **Settings → Variables and Secrets → Add**:
+тип **Secret**, имя `BOT_TOKEN`, значение — токен от BotFather. Нажмите **Deploy**.
 
 ## 4. Подключите бота
 
-Откройте в браузере (подставьте свой адрес Worker и свой `WEBHOOK_SECRET`):
+Откройте в браузере адрес Worker с `/setup` на конце, например:
 
 ```
-https://stepan-bot.ВАШ-АККАУНТ.workers.dev/setup?key=ВАШ_WEBHOOK_SECRET
+https://stepan-bot.ВАШ-АККАУНТ.workers.dev/setup
 ```
 
 Должно появиться «✓ Бот подключён» и адрес для формы.
@@ -46,7 +38,7 @@ https://stepan-bot.ВАШ-АККАУНТ.workers.dev/setup?key=ВАШ_WEBHOOK_SE
 ## 5. Скажите боту, куда слать заявки
 
 1. Напишите своему боту `/id`. Он ответит числом, это ваш chat_id.
-2. Добавьте в Worker переменную `ADMIN_CHAT_ID` (Text) с этим числом и нажмите **Deploy**.
+2. Добавьте в Worker переменную `ADMIN_CHAT_ID` (тип Text) с этим числом и нажмите **Deploy**.
 
 ## 6. Подключите форму на сайте
 

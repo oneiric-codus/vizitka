@@ -6,15 +6,23 @@
  *  2. POST /tg    — webhook Telegram: клиент пишет боту, выбирает услугу,
  *                   описывает задачу, а бот пересылает это вам.
  *                   Чтобы ответить клиенту, сделайте Reply (Ответить) на его заявку в боте.
- *  3. GET /setup?key=WEBHOOK_SECRET — один раз подключает бота к этому серверу.
+ *  3. GET /setup — подключает бота к этому серверу (можно открывать сколько угодно раз).
  *
  * Переменные (Settings → Variables and Secrets):
  *  BOT_TOKEN       секрет  токен от @BotFather
- *  WEBHOOK_SECRET  секрет  любая строка из латинских букв и цифр, например k8Hq2Lm9x
  *  ADMIN_CHAT_ID   текст   ваш chat_id (бот покажет его по команде /id)
- *  ALLOWED_ORIGIN  текст   https://oneiric-codus.github.io
- *  SITE_URL        текст   адрес вашего портфолио
+ * Необязательные: ALLOWED_ORIGIN, SITE_URL (по умолчанию значения ниже).
  */
+
+const DEFAULT_ORIGIN = "https://oneiric-codus.github.io";
+const DEFAULT_SITE = "https://oneiric-codus.github.io/vizitka/";
+
+// Секрет для проверки, что запрос пришёл от Telegram. Вычисляется из токена,
+// поэтому отдельно его хранить не нужно.
+async function hookSecret(env) {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode("hook:" + env.BOT_TOKEN));
+  return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("").slice(0, 48);
+}
 
 const SERVICES = ["Сайт", "Веб-дизайн", "Telegram-бот", "Визитка", "Другое"];
 
@@ -48,7 +56,7 @@ export default {
 /* ---------------- заявки с сайта ---------------- */
 
 function allowedOrigins(env) {
-  return String(env.ALLOWED_ORIGIN || "").split(",").map((s) => s.trim()).filter(Boolean);
+  return String(env.ALLOWED_ORIGIN || DEFAULT_ORIGIN).split(",").map((s) => s.trim()).filter(Boolean);
 }
 
 async function handleLead(req, env) {
@@ -97,7 +105,7 @@ async function handleLead(req, env) {
 /* ---------------- переписка с ботом ---------------- */
 
 async function handleUpdate(req, env) {
-  if (req.headers.get("X-Telegram-Bot-Api-Secret-Token") !== env.WEBHOOK_SECRET) return text("forbidden", 403);
+  if (req.headers.get("X-Telegram-Bot-Api-Secret-Token") !== (await hookSecret(env))) return text("forbidden", 403);
   const u = await req.json();
   if (u.callback_query) await onCallback(u.callback_query, env);
   else if (u.message) await onMessage(u.message, env);
@@ -110,7 +118,7 @@ function greet(chatId, env) {
     [{ text: "Telegram-бот", callback_data: "svc:2" }, { text: "Визитка", callback_data: "svc:3" }],
     [{ text: "Другое", callback_data: "svc:4" }],
   ];
-  if (env.SITE_URL) rows.push([{ text: "Посмотреть мои работы ↗", url: env.SITE_URL }]);
+  rows.push([{ text: "Посмотреть мои работы ↗", url: env.SITE_URL || DEFAULT_SITE }]);
   return tg(env, "sendMessage", {
     chat_id: chatId,
     text:
@@ -199,14 +207,11 @@ async function onMessage(m, env) {
 /* ---------------- первичная настройка ---------------- */
 
 async function setup(url, env) {
-  if (!env.WEBHOOK_SECRET || url.searchParams.get("key") !== env.WEBHOOK_SECRET) {
-    return text("Откройте адрес вида /setup?key=ВАШ_WEBHOOK_SECRET", 403);
-  }
+  if (!env.BOT_TOKEN) return text("Сначала добавьте секрет BOT_TOKEN в настройках Worker.", 400);
   const hook = await tg(env, "setWebhook", {
     url: `${url.origin}/tg`,
-    secret_token: env.WEBHOOK_SECRET,
+    secret_token: await hookSecret(env),
     allowed_updates: ["message", "callback_query"],
-    drop_pending_updates: true,
   });
   await tg(env, "setMyCommands", { commands: [{ command: "start", description: "Оставить заявку" }] });
   await tg(env, "setMyShortDescription", {
