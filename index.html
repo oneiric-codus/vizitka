@@ -192,6 +192,19 @@ section{position:relative}
   .btn{height:54px;padding:0 22px;flex:1 1 auto;justify-content:center}
 }
 
+/* ---------- телефон: декор не перекрывает текст ---------- */
+@media (max-width:760px){
+  .coords{display:none}
+  .stage{padding-top:clamp(92px,28vw,128px);margin-top:12px}
+  .d1{width:clamp(88px,26vw,116px);top:0;left:auto;right:0}
+  .d2{width:clamp(48px,14vw,64px);top:clamp(44px,13vw,60px);left:auto;right:clamp(96px,30vw,132px)}
+  .d3{display:none}
+  .orb-p{opacity:.5}
+  .o1{width:56vw!important;height:56vw!important;right:-30vw!important;top:-8vh!important}
+  .o2{width:30vw!important;height:30vw!important;left:-20vw!important;top:72vh!important}
+  .o3{display:none}
+}
+
 /* ---------- marquee ---------- */
 .band{margin-block:8px 0;padding-block:18px;overflow:hidden;border-radius:0;border-left:0;border-right:0}
 .track{display:flex;gap:40px;width:max-content;animation:marq 38s linear infinite}
@@ -454,9 +467,9 @@ a.fbtn:hover .fi{background:var(--accent)}
 
 
 <div class="scene" aria-hidden="true">
-  <div class="orb-p" data-depth="18" style="width:clamp(220px,32vw,460px);height:clamp(220px,32vw,460px);right:-8vw;top:8vh"><div class="orb"></div></div>
-  <div class="orb-p" data-depth="-26" style="width:clamp(120px,14vw,200px);height:clamp(120px,14vw,200px);left:-3vw;top:58vh"><div class="orb blue" style="animation-delay:-4s"></div></div>
-  <div class="orb-p" data-depth="10" style="width:clamp(70px,7vw,110px);height:clamp(70px,7vw,110px);left:38vw;top:82vh"><div class="orb" style="animation-delay:-8s"></div></div>
+  <div class="orb-p o1" data-depth="18" style="width:clamp(220px,32vw,460px);height:clamp(220px,32vw,460px);right:-8vw;top:8vh"><div class="orb"></div></div>
+  <div class="orb-p o2" data-depth="-26" style="width:clamp(120px,14vw,200px);height:clamp(120px,14vw,200px);left:-3vw;top:58vh"><div class="orb blue" style="animation-delay:-4s"></div></div>
+  <div class="orb-p o3" data-depth="10" style="width:clamp(70px,7vw,110px);height:clamp(70px,7vw,110px);left:38vw;top:82vh"><div class="orb" style="animation-delay:-8s"></div></div>
 </div>
 
 <header class="top">
@@ -479,7 +492,7 @@ a.fbtn:hover .fi{background:var(--accent)}
     <div class="wrap">
       <div class="hud">
         <span class="mono">Степан Семенюк <span class="acc">/</span> веб-дизайн и сайты</span>
-        <span class="mono" aria-hidden="true">X <b id="cx">0000</b> · Y <b id="cy">0000</b></span>
+        <span class="mono coords" aria-hidden="true">X <b id="cx">0000</b> · Y <b id="cy">0000</b></span>
       </div>
 
       <div class="stage">
