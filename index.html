@@ -413,7 +413,23 @@ section[id]{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 84px)}
 }
 @media (max-width:560px){.ai-list{grid-template-columns:1fr}}
 
-/* превью бота в карточке проекта */
+/* мини-приложение: настоящие скриншоты */
+.mini{height:100%;border-radius:31px;overflow:hidden;background:#17121a;display:flex;flex-direction:column}
+.mini-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2cqw;padding:7.5cqw 4.5cqw 3cqw;background:#221b25;color:#f4e8ef;font-size:3.5cqw;font-family:var(--f-body)}
+.mini-top span:last-child{text-align:right;font-size:5cqw;line-height:1}
+.mini-top b{text-align:center;font-weight:600;font-size:3.9cqw;line-height:1.2}
+.mini-top b small{display:block;font-weight:400;font-size:3cqw;color:#a8949f}
+.mini-shots{position:relative;flex:1;overflow:hidden}
+#bookPhone{aspect-ratio:auto}
+#bookPhone .mini-shots{flex:none;aspect-ratio:560/1196}
+.mini-shots img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;animation:miniCycle 16s linear infinite;animation-delay:calc(var(--i) * 4s - .6s)}
+.mini.single .mini-shots img{opacity:1;animation:none}
+@keyframes miniCycle{0%{opacity:0}4%,25%{opacity:1}29%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.mini-shots img:last-child{opacity:1}}
+.tgstage .mini{border-radius:clamp(15px,2.3vw,26px)}
+.tgstage .tag-n{max-width:36%}
+
+/* превью в карточке проекта */
 .tgstage{position:relative;width:100%;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:radial-gradient(circle at 25% 20%, #fff 0, #F6EDE7 40%, #EAD7CD 100%);box-shadow:0 34px 70px -34px rgba(20,24,44,.45), 0 0 0 1px rgba(16,18,24,.06)}
 .tgstage .phone{position:absolute;left:62%;top:9%;width:40%;border-radius:clamp(20px,3vw,34px);padding:clamp(5px,.7vw,8px);transform:translateX(-50%) rotate(-4deg);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
 .proj:hover .tgstage .phone{transform:translateX(-50%) rotate(0deg) translateY(-6px)}
@@ -667,7 +683,7 @@ a.fbtn:hover .fi{background:var(--accent)}
           <span class="tag mono">Bot</span>
           <div class="glyph"><svg viewBox="0 0 34 34" fill="none" stroke="#101218" stroke-width="1.6"><rect x="5" y="7" width="24" height="22" rx="4"/><path d="M5 13h24M11 4v6M23 4v6"/><path d="M11 21l3.5 3.5L23 17" stroke="#2C38D8"/></svg></div>
           <h3>Запись в Telegram</h3>
-          <p>Бот или мини-приложение, где клиенты сами выбирают услугу и время. Замена DIKIDI, YCLIENTS и похожим сервисам.</p>
+          <p>Мини-приложение или бот, где клиенты сами смотрят услуги, цены и работы и записываются. Замена DIKIDI, YCLIENTS и похожим сервисам.</p>
           <ul><li>Услуги и цены</li><li>Запись в пару нажатий</li><li>Заявки сразу вам</li></ul>
         </article>
         <article class="card glass">
@@ -695,22 +711,22 @@ a.fbtn:hover .fi{background:var(--accent)}
         <div class="book-txt">
           <span class="mono eyebrow">[ Запись в Telegram ]</span>
           <h2 class="h2">Своя запись <em>без подписок</em></h2>
-          <p class="book-lead">Вместо DIKIDI, YCLIENTS и похожих сервисов клиенты записываются через вашего бота прямо в Telegram. Ничего не нужно скачивать и регистрироваться, а заявка сразу приходит вам.</p>
+          <p class="book-lead">Вместо DIKIDI, YCLIENTS и похожих сервисов клиенты записываются через ваше мини-приложение прямо в Telegram: смотрят услуги, цены и работы мастеров, выбирают время. Ничего не нужно скачивать, а заявка сразу приходит вам.</p>
           <div class="cmp" role="table" aria-label="Сравнение с сервисами записи">
-            <div class="crow chead" role="row"><span role="columnheader"></span><span role="columnheader" class="mono">Сервисы записи</span><span role="columnheader" class="mono acc">Ваш бот</span></div>
-            <div class="crow" role="row"><b role="rowheader">Где записаться</b><span role="cell" data-l="Сервисы">Приложение или сайт сервиса</span><span role="cell" data-l="Ваш бот">Прямо в Telegram, без регистрации</span></div>
-            <div class="crow" role="row"><b role="rowheader">Оплата</b><span role="cell" data-l="Сервисы">Тариф сервиса, часто ежемесячный</span><span role="cell" data-l="Ваш бот">Разовая настройка, без абонентской платы</span></div>
-            <div class="crow" role="row"><b role="rowheader">Оформление</b><span role="cell" data-l="Сервисы">Логотип и шаблон сервиса</span><span role="cell" data-l="Ваш бот">Ваше название, услуги и цены</span></div>
-            <div class="crow" role="row"><b role="rowheader">Заявки</b><span role="cell" data-l="Сервисы">В кабинете сервиса</span><span role="cell" data-l="Ваш бот">Сразу вам в Telegram</span></div>
+            <div class="crow chead" role="row"><span role="columnheader"></span><span role="columnheader" class="mono">Сервисы записи</span><span role="columnheader" class="mono acc">Ваше мини-приложение</span></div>
+            <div class="crow" role="row"><b role="rowheader">Где записаться</b><span role="cell" data-l="Сервисы">Приложение или сайт сервиса</span><span role="cell" data-l="Ваше">Прямо в Telegram, без регистрации</span></div>
+            <div class="crow" role="row"><b role="rowheader">Оплата</b><span role="cell" data-l="Сервисы">Тариф сервиса, часто ежемесячный</span><span role="cell" data-l="Ваше">Разовая настройка, без абонентской платы</span></div>
+            <div class="crow" role="row"><b role="rowheader">Оформление</b><span role="cell" data-l="Сервисы">Логотип и шаблон сервиса</span><span role="cell" data-l="Ваше">Ваше название, услуги и цены</span></div>
+            <div class="crow" role="row"><b role="rowheader">Заявки</b><span role="cell" data-l="Сервисы">В кабинете сервиса</span><span role="cell" data-l="Ваше">Сразу вам в Telegram</span></div>
           </div>
           <div class="actions book-act">
-            <a class="btn glass magnetic" href="https://t.me/cramenail_bot" target="_blank" rel="noopener">Пример: Crème Nails ↗</a>
-            <a class="btn btn-ink magnetic" href="#contact">Хочу такого бота <span class="arr">↗</span></a>
+            <a class="btn glass magnetic" href="https://t.me/cramenail_bot" target="_blank" rel="noopener">Открыть пример ↗</a>
+            <a class="btn btn-ink magnetic" href="#contact">Хочу такое же <span class="arr">↗</span></a>
           </div>
         </div>
-        <a class="book-vis" href="https://t.me/cramenail_bot" target="_blank" rel="noopener" data-cursor="Открыть ↗" aria-label="Открыть бота Crème Nails в Telegram">
+        <a class="book-vis" href="https://t.me/cramenail_bot" target="_blank" rel="noopener" data-cursor="Открыть ↗" aria-label="Открыть мини-приложение Crème Nails в Telegram">
           <div class="phone" id="bookPhone"></div>
-          <span class="mono book-cap">@cramenail_bot · пример для салона маникюра</span>
+          <span class="mono book-cap">Crème Nails · главная, услуги, работы, запись</span>
         </a>
       </div>
     </div>
@@ -825,7 +841,7 @@ a.fbtn:hover .fi{background:var(--accent)}
         <details class="glass"><summary><span class="i">02</span><span>Сделаете сайт для моей ниши?</span><span class="pl">+</span></summary><div class="ans">Да. Ниша влияет на структуру и стиль сайта, а не на то, возьмусь ли я. В портфолио уже есть приём металла, фитнес и бьюти.</div></details>
         <details class="glass"><summary><span class="i">03</span><span>Сайт будет нормально работать на телефоне?</span><span class="pl">+</span></summary><div class="ans">Да. Каждый сайт собираю сразу под телефоны и компьютеры и проверяю на экранах разной ширины.</div></details>
         <details class="glass"><summary><span class="i">04</span><span>Можно потом поменять цены и тексты?</span><span class="pl">+</span></summary><div class="ans">Да. Покажу, как это сделать, или внесу правки сам.</div></details>
-        <details class="glass"><summary><span class="i">05</span><span>Чем свой бот для записи лучше DIKIDI или YCLIENTS?</span><span class="pl">+</span></summary><div class="ans">Клиент записывается прямо в Telegram, ничего не скачивая и не регистрируясь. В боте ваше название, ваши услуги и цены, а заявки приходят вам сразу. За настройку вы платите один раз, без ежемесячной подписки на сервис записи.</div></details>
+        <details class="glass"><summary><span class="i">05</span><span>Чем своё мини-приложение для записи лучше DIKIDI или YCLIENTS?</span><span class="pl">+</span></summary><div class="ans">Клиент записывается прямо в Telegram, ничего не скачивая и не регистрируясь. В приложении ваше название, ваши услуги, цены и фото работ, а заявки приходят вам сразу. За настройку вы платите один раз, без ежемесячной подписки на сервис записи.</div></details>
         <details class="glass"><summary><span class="i">06</span><span>Что умеет ИИ-ассистент?</span><span class="pl">+</span></summary><div class="ans">Он отвечает клиентам в Telegram по вашим данным: услуги, цены, адрес, правила записи. Может записать клиента или собрать заявку. Если вопрос сложный, клиент недоволен или нужно ваше решение, ассистент сообщает вам и передаёт диалог.</div></details>
         <details class="glass"><summary><span class="i">07</span><span>Можно автоматизировать то, что я сейчас делаю вручную?</span><span class="pl">+</span></summary><div class="ans">Часто да. Опишите, что повторяется каждый день: перенос заявок в таблицу, ответы на одни и те же сообщения, напоминания клиентам. Подскажу, что из этого можно отдать боту или скрипту.</div></details>
       </div>
@@ -960,12 +976,12 @@ const PROJECTS = [
   },
   {
     niche: "Салон маникюра",
-    kind: "Telegram-бот",
+    kind: "Мини-приложение Telegram",
     title: "Crème Nails",
     url: "https://t.me/cramenail_bot",
-    cta: "Открыть бота",
-    desc: "Бот для записи в салон маникюра. Клиент смотрит услуги и цены и записывается прямо в Telegram, без приложений и регистрации.",
-    features: ["Услуги и цены", "Запись в пару нажатий", "Без приложений", "Замена DIKIDI и YCLIENTS"],
+    cta: "Открыть в Telegram",
+    desc: "Мини-приложение студии маникюра прямо внутри Telegram: услуги и цены, галерея работ, выбор мастера и заявка на запись. Клиенту ничего не нужно скачивать.",
+    features: ["Услуги и цены", "Галерея работ", "Выбор мастера", "Заявка на запись", "Замена DIKIDI и YCLIENTS"],
     look: "tg"
   }
 ];
@@ -983,23 +999,18 @@ const host = u => { try { const x = new URL(u); return (x.hostname + x.pathname)
 const ICON_TG = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M21.4 4.3 2.9 11.4c-1.2.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.5-1.5ZM8.9 14.1l9.6-6.1c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.6-4.9Z"/></svg>`;
 const ICON_VK = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12.8 18C6.3 18 2.6 13.5 2.4 6h3.3c.1 5.5 2.5 7.8 4.4 8.3V6h3.1v4.7c1.9-.2 3.9-2.4 4.5-4.7h3.1c-.5 2.9-2.6 5-4.1 5.9 1.5.7 3.9 2.6 4.8 6.1h-3.4c-.7-2.3-2.5-4.1-4.9-4.3V18h-.4Z"/></svg>`;
 
-// Нарисованный экран бота Crème Nails (используется в блоке «Запись» и в проекте).
-const TG_SCREEN = `
-  <div class="tg">
-    <div class="tg-top"><span class="tg-av">C</span><span><b>Crème Nails</b><small>бот</small></span></div>
-    <div class="tg-body">
-      <div class="tg-m">Здравствуйте! Это Crème Nails. Выберите услугу:</div>
-      <div class="tg-kb"><span class="on">Маникюр</span><span>Покрытие</span><span>Дизайн</span><span>Цены</span></div>
-      <div class="tg-m me">Маникюр с покрытием</div>
-      <div class="tg-m">Свободное время в пятницу:</div>
-      <div class="tg-kb"><span>11:00</span><span class="on">13:30</span><span>16:00</span><span>18:30</span></div>
-      <div class="tg-m tg-ok">Готово, вы записаны на пятницу, 13:30</div>
-    </div>
-    <div class="tg-in">Сообщение</div>
+// Мини-приложение Crème Nails: настоящие скриншоты экранов (папка img/).
+const MINI_SCREENS = [["home","Главная"], ["services","Услуги"], ["works","Работы"], ["book","Запись"]];
+const MINI = (only) => {
+  const list = only ? MINI_SCREENS.filter(([n]) => n === only) : MINI_SCREENS;
+  return `<div class="mini${only ? " single" : ""}">
+    <div class="mini-top"><span>✕ Закрыть</span><b>Crème Nails<small>мини-приложение</small></b><span>⋯</span></div>
+    <div class="mini-shots">${list.map(([n, t], i) => `<img src="img/creme-${n}.jpg" alt="Мини-приложение Crème Nails, экран «${t}»" decoding="async" style="--i:${i}">`).join("")}</div>
   </div>`;
+};
 
 const MOCKS = {
-  tg: p => `<div class="tgstage"><div class="phone" aria-hidden="true">${TG_SCREEN}</div><span class="tag-n">Crème<br>Nails<small>Запись в Telegram</small></span></div>`,
+  tg: p => `<div class="tgstage"><div class="phone">${MINI("home")}</div><span class="tag-n">Crème<br>Nails<small>Мини-приложение</small></span></div>`,
   metal: p => `
     <div class="mock m-metal"><div class="mbar"><i></i><i></i><i></i><span>${esc(host(p.url))}</span></div>
       <div class="mbody">
@@ -1099,7 +1110,7 @@ function render() {
   $("#fcontacts").innerHTML = foot.join("");
   $("#tgBtn").href = CONTACTS.telegram ? "https://t.me/" + CONTACTS.telegram : "#contact";
   $("#yr").textContent = new Date().getFullYear();
-  $("#bookPhone").innerHTML = TG_SCREEN;
+  $("#bookPhone").innerHTML = MINI();
 }
 render();
 
