@@ -390,6 +390,29 @@ section[id]{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 84px)}
 .tg-ok::before{content:"✓";flex:0 0 auto;width:6cqw;height:6cqw;border-radius:50%;display:grid;place-items:center;background:#7BAE8A;color:#fff;font-size:3.6cqw}
 .tg-in{margin:0 4cqw 5cqw;padding:3cqw 4cqw;border-radius:6cqw;background:#fff;color:#b3a59d;font-size:3.8cqw}
 
+/* ИИ-ассистент */
+.book.rev{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+.ai-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ai-list li{display:flex;flex-direction:column;gap:4px;padding:16px;border-radius:20px;background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.9)}
+.ai-list b{font-family:var(--f-display);font-weight:500;font-size:15.5px;letter-spacing:-.01em}
+.ai-list span{font-size:14px;color:var(--ink-2);line-height:1.5}
+.ph-ai{position:relative}
+.tg.ai{background:#EEF0F8;color:#1b1e2b}
+.tg.ai .tg-top{background:#fff}
+.tg.ai .tg-av{background:linear-gradient(145deg,#C9CEF5,#7A84E8)}
+.tg.ai .tg-m.me{align-self:flex-start;background:#fff}
+.tg.ai .tg-m.bot{align-self:flex-end;background:#DCE1FF}
+.tg-m .who{display:block;font-style:normal;font-size:3.2cqw;color:#2C38D8;font-weight:600;margin-bottom:.8cqw}
+.push{position:absolute;left:6%;right:6%;bottom:14%;padding:3.4cqw 4cqw;border-radius:5cqw;background:rgba(255,255,255,.96);box-shadow:0 18px 40px -14px rgba(20,24,44,.45);font-size:3.6cqw;line-height:1.35;color:#2b2f3d;animation:pushIn 6s ease-in-out infinite}
+.push b{display:flex;align-items:center;gap:2cqw;font-size:3.6cqw;margin-bottom:1cqw;color:#101218}
+.push b::before{content:"";width:5.5cqw;height:5.5cqw;border-radius:1.6cqw;background:linear-gradient(145deg,#4c58ea,#1f2aa8)}
+@keyframes pushIn{0%,30%{opacity:0;transform:translateY(-14px)}40%,90%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-14px)}}
+@media (max-width:900px){
+  .book.rev{grid-template-columns:1fr}
+  .book.rev .book-vis{order:-1}
+}
+@media (max-width:560px){.ai-list{grid-template-columns:1fr}}
+
 /* превью бота в карточке проекта */
 .tgstage{position:relative;width:100%;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:radial-gradient(circle at 25% 20%, #fff 0, #F6EDE7 40%, #EAD7CD 100%);box-shadow:0 34px 70px -34px rgba(20,24,44,.45), 0 0 0 1px rgba(16,18,24,.06)}
 .tgstage .phone{position:absolute;left:62%;top:9%;width:40%;border-radius:clamp(20px,3vw,34px);padding:clamp(5px,.7vw,8px);transform:translateX(-50%) rotate(-4deg);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
@@ -689,6 +712,44 @@ a.fbtn:hover .fi{background:var(--accent)}
           <div class="phone" id="bookPhone"></div>
           <span class="mono book-cap">@cramenail_bot · пример для салона маникюра</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSISTANT -->
+  <section class="sec" id="assistant" style="padding-top:0">
+    <div class="wrap">
+      <div class="book rev glass">
+        <div class="book-vis">
+          <div class="phone ph-ai" aria-hidden="true">
+            <div class="tg ai">
+              <div class="tg-top"><span class="tg-av">А</span><span><b>Анна</b><small>клиент · пишет в ваш Telegram</small></span></div>
+              <div class="tg-body">
+                <div class="tg-m me">Здравствуйте! Есть окошко на маникюр завтра вечером?</div>
+                <div class="tg-m bot"><i class="who">ИИ-ассистент · через 3 сек</i>Здравствуйте, Анна! Завтра свободно 18:00 и 19:30. Записать вас?</div>
+                <div class="tg-m me">Давайте 18:00. А можно прийти с ребёнком?</div>
+                <div class="tg-m bot"><i class="who">ИИ-ассистент</i>Записала вас на завтра, 18:00. Про ребёнка уточню у мастера и сразу вернусь с ответом.</div>
+              </div>
+              <div class="tg-in">Сообщение</div>
+            </div>
+            <div class="push"><b>Ассистент зовёт вас</b>Анна спрашивает, можно ли прийти с ребёнком. Ответьте, и я передам.</div>
+          </div>
+          <span class="mono book-cap">Пример переписки</span>
+        </div>
+        <div class="book-txt">
+          <span class="mono eyebrow">[ ИИ-ассистент ]</span>
+          <h2 class="h2">Отвечает <em>за вас</em></h2>
+          <p class="book-lead">Ассистент сидит в вашем Telegram и отвечает клиентам сразу, даже ночью и в выходные. Он знает ваши услуги, цены и правила, а когда нужен живой человек, присылает вам уведомление.</p>
+          <ul class="ai-list">
+            <li><b>Отвечает за секунды</b><span>Клиент не ждёт и не уходит к конкурентам, пока вы заняты.</span></li>
+            <li><b>Знает ваше дело</b><span>Услуги, цены, адрес, график и правила записи вы задаёте сами.</span></li>
+            <li><b>Записывает и собирает заявки</b><span>Свободное время, контакты и пожелания клиента приходят вам готовыми.</span></li>
+            <li><b>Зовёт вас, когда нужно</b><span>Сложный вопрос, жалоба или нестандартная просьба передаются вам.</span></li>
+          </ul>
+          <div class="actions book-act">
+            <a class="btn btn-ink magnetic" href="#contact">Хочу ассистента <span class="arr">↗</span></a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1148,7 +1209,7 @@ if (!reduce) {
 
 if (fine && !reduce) {
   // мягкий блик на стеклянных карточках под курсором
-  document.querySelectorAll(".card, .proj, .step, .faq details, .fbtn, .clist a, .spec, .book").forEach(el => {
+  document.querySelectorAll(".card, .proj, .step, .faq details, .fbtn, .clist a, .spec, .book, .ai-list li").forEach(el => {
     el.classList.add("sheen");
     let r = null, raf = 0, ex = 0, ey = 0;
     el.addEventListener("pointerenter", () => { r = el.getBoundingClientRect(); });
