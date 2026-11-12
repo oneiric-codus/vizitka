@@ -7,10 +7,10 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:title" content="Степан Семенюк — сайты под любую нишу">
-<meta property="og:description" content="Сайты, веб-дизайн, Telegram-боты и визитки. Портфолио и заявка в один клик.">
+<meta property="og:description" content="Сайты, Telegram-боты для записи, ИИ-ассистенты и автоматизация. Портфолио и заявка в один клик.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%23101218'/%3E%3Ctext x='32' y='41' font-family='Arial Black,Arial' font-weight='900' font-size='22' fill='white' text-anchor='middle'%3EС%2FС%3C/text%3E%3C/svg%3E">
 <title>Степан Семенюк</title>
-<meta name="description" content="Степан Семенюк: сайты, веб-дизайн, Telegram-боты и визитки под любую нишу.">
+<meta name="description" content="Степан Семенюк: сайты, веб-дизайн, Telegram-боты для записи, ИИ-ассистенты и автоматизация под любую нишу.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;700&family=Oswald:wght@600&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Cormorant+Garamond:ital,wght@1,500;1,600&display=swap">
@@ -182,10 +182,11 @@ section{position:relative}
   .callout{display:none}
   .hero-foot{grid-template-columns:1fr;margin-top:40px}
   .actions{justify-content:flex-start}
-  .mini-hud{display:grid;grid-template-columns:1fr;gap:8px;margin-top:28px}
-  .mh{display:flex;align-items:center;gap:12px;border:1px solid var(--accent);border-radius:6px;padding:10px 12px;background:rgba(255,255,255,.8);color:var(--ink)}
-  .mh::before{content:"";flex:0 0 auto;width:7px;height:7px;background:var(--accent)}
-  .mh small{color:var(--accent);font-size:inherit;min-width:16ch}
+  .mini-hud{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:28px;border:1px solid var(--accent);border-radius:16px;background:rgba(255,255,255,.82);overflow:hidden;font-size:10.5px;letter-spacing:.06em}
+  .mh{display:flex;flex-direction:column;gap:6px;padding:12px 10px 13px;color:var(--ink);line-height:1.35;min-width:0}
+  .mh + .mh{border-left:1px solid rgba(44,56,216,.22)}
+  .mh small{color:var(--accent);font-size:inherit;display:flex;align-items:center;gap:6px}
+  .mh small::before{content:"";flex:0 0 auto;width:5px;height:5px;background:var(--accent)}
   .title .l2{padding-left:0}
 }
 @media (max-width:480px){
@@ -194,8 +195,7 @@ section{position:relative}
 }
 
 /* ---------- производительность ---------- */
-/* Блоки ниже первого экрана не отрисовываются, пока до них не доскроллили. */
-#services,#work,#approach,#faq{content-visibility:auto;contain-intrinsic-size:auto 1200px}
+section[id]{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 84px)}
 .band{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:rgba(255,255,255,.72)!important}
 /* На телефонах и планшетах размытие стекла заменено плотной полупрозрачной заливкой:
    выглядит почти так же, но не грузит видеокарту при прокрутке. */
@@ -211,13 +211,19 @@ section{position:relative}
 @media (max-width:760px){
   .coords{display:none}
   .stage{padding-top:clamp(92px,28vw,128px);margin-top:12px}
-  .d1{width:clamp(88px,26vw,116px);top:0;left:auto;right:0}
-  .d2{width:clamp(48px,14vw,64px);top:clamp(44px,13vw,60px);left:auto;right:clamp(96px,30vw,132px)}
+  .d1{width:clamp(88px,26vw,116px);top:clamp(26px,8vw,34px);left:auto;right:0}
+  .d2{width:clamp(48px,14vw,64px);top:clamp(72px,21vw,92px);left:auto;right:clamp(96px,30vw,132px)}
   .d3{display:none}
   .orb-p{opacity:.5}
   .o1{width:56vw!important;height:56vw!important;right:-30vw!important;top:-8vh!important}
   .o2{display:none}
   .o3{display:none}
+  /* слоган по центру первого экрана, с отступом до текста */
+  .stage{min-height:46vh;min-height:46svh;display:flex;flex-direction:column;justify-content:center;padding-bottom:8px}
+  .title{align-items:center;text-align:center}
+  .title .l2,.title .l3{padding:0;text-align:center}
+  .hero-foot{margin-top:40px}
+  .lead{font-size:16.5px}
 }
 
 /* ---------- marquee ---------- */
@@ -240,7 +246,7 @@ section{position:relative}
 .eyebrow{display:block;margin-bottom:18px}
 
 /* ---------- services ---------- */
-.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .card{border-radius:var(--r-card);padding:26px;display:flex;flex-direction:column;gap:14px;min-width:0;transition:transform .4s cubic-bezier(.2,.8,.2,1), background .3s}
 .card:hover{background:var(--glass-strong)}
 .card .tag{align-self:flex-start;border:1px solid var(--line);border-radius:var(--r-pill);padding:5px 10px}
@@ -295,10 +301,10 @@ section{position:relative}
 /* metal (графит, белый, оранжевый) */
 .m-metal .mbody{background:#ffffff;color:#17191c;font-family:var(--f-body);display:flex;flex-direction:column}
 .m-metal .mtop{background:#17191c;color:#fff;padding:2.4cqw 3.4cqw 3.4cqw}
-.m-metal .mnav{display:flex;align-items:center;gap:2.2cqw;font-size:1.6cqw;color:#a7adb6}
-.m-metal .mnav b{font-family:"Oswald",var(--f-display);font-weight:600;color:#fff;font-size:2.4cqw;letter-spacing:.04em;margin-right:auto}
-.m-metal .mnav b small{display:block;font-family:var(--f-body);font-size:1.1cqw;letter-spacing:.08em;color:#a7adb6;font-weight:400;text-transform:uppercase}
-.m-metal .mnav em{font-style:normal;color:#fff;font-weight:600}
+.m-metal .mnv{display:flex;align-items:center;gap:2.2cqw;font-size:1.6cqw;color:#a7adb6}
+.m-metal .mnv b{font-family:"Oswald",var(--f-display);font-weight:600;color:#fff;font-size:2.4cqw;letter-spacing:.04em;margin-right:auto}
+.m-metal .mnv b small{display:block;font-family:var(--f-body);font-size:1.1cqw;letter-spacing:.08em;color:#a7adb6;font-weight:400;text-transform:uppercase}
+.m-metal .mnv em{font-style:normal;color:#fff;font-weight:600}
 .m-metal .mhero{display:grid;grid-template-columns:1.15fr .85fr;gap:3cqw;margin-top:3.2cqw;align-items:center}
 .m-metal .eb{font-size:1.35cqw;letter-spacing:.14em;text-transform:uppercase;color:#a7adb6}
 .m-metal .rule{width:5cqw;height:.4cqw;background:#e2600f;margin:1.4cqw 0}
@@ -351,6 +357,60 @@ section{position:relative}
 .m-sal .price div{display:flex;gap:.8cqw}
 .m-sal .price div::after{content:"";order:1;flex:1;border-bottom:1px dotted #b8aa98;margin-bottom:.5cqw}
 .m-sal .price b{order:2;font-weight:500}
+
+/* ---------- booking ---------- */
+.book{border-radius:40px;padding:clamp(22px,4vw,52px);display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(24px,4vw,56px);align-items:center}
+.book-txt{display:flex;flex-direction:column;gap:20px;min-width:0}
+.book-txt .eyebrow{margin-bottom:0}
+.book-lead{margin:0;color:var(--ink-2);max-width:54ch}
+.cmp{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.crow{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr) minmax(0,1.1fr);gap:14px;padding:12px 0;border-bottom:1px solid var(--line);font-size:14.5px;align-items:baseline}
+.crow b{font-weight:600}
+.crow span:nth-child(2){color:var(--ink-3)}
+.crow span:nth-child(3){color:var(--ink);font-weight:500}
+.chead{padding:10px 0 8px}
+.book-act{justify-content:flex-start}
+.book-vis{display:flex;flex-direction:column;align-items:center;gap:14px;min-width:0}
+.book-cap{text-align:center}
+
+.phone{container-type:inline-size;width:min(290px,100%);aspect-ratio:9/18.6;border-radius:40px;background:#121318;padding:9px;box-shadow:0 40px 80px -36px rgba(20,24,44,.55), inset 0 0 0 1px rgba(255,255,255,.08);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.book-vis:hover .phone{transform:translateY(-6px) rotate(-1.5deg)}
+.tg{height:100%;border-radius:12cqw;overflow:hidden;display:flex;flex-direction:column;background:#F4ECE6;font-family:var(--f-body);color:#2a2320;font-size:4.3cqw;line-height:1.35}
+.tg-top{display:flex;align-items:center;gap:3cqw;padding:7cqw 5cqw 3.5cqw;background:#fffaf6;border-bottom:1px solid rgba(42,35,32,.08)}
+.tg-av{width:11cqw;height:11cqw;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;background:linear-gradient(145deg,#E8C4B8,#C98A7A);color:#fff;font-family:var(--f-serif);font-style:italic;font-weight:600;font-size:5cqw}
+.tg-top b{display:block;font-size:4.6cqw}
+.tg-top small{display:block;font-size:3.4cqw;color:#9a8a82}
+.tg-body{flex:1;display:flex;flex-direction:column;gap:2.6cqw;padding:4cqw;overflow:hidden}
+.tg-m{max-width:84%;padding:2.8cqw 3.6cqw;border-radius:4.5cqw;background:#fff;box-shadow:0 1px 0 rgba(42,35,32,.06)}
+.tg-m.me{align-self:flex-end;background:#F1D9CF}
+.tg-kb{display:grid;grid-template-columns:1fr 1fr;gap:1.6cqw;max-width:92%}
+.tg-kb span{padding:2.4cqw 1cqw;border-radius:3cqw;background:rgba(255,255,255,.7);text-align:center;font-size:3.7cqw;color:#7c5a4f;font-weight:500}
+.tg-kb span.on{background:#C98A7A;color:#fff}
+.tg-ok{display:flex;gap:2cqw;align-items:center}
+.tg-ok::before{content:"✓";flex:0 0 auto;width:6cqw;height:6cqw;border-radius:50%;display:grid;place-items:center;background:#7BAE8A;color:#fff;font-size:3.6cqw}
+.tg-in{margin:0 4cqw 5cqw;padding:3cqw 4cqw;border-radius:6cqw;background:#fff;color:#b3a59d;font-size:3.8cqw}
+
+/* превью бота в карточке проекта */
+.tgstage{position:relative;width:100%;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:radial-gradient(circle at 25% 20%, #fff 0, #F6EDE7 40%, #EAD7CD 100%);box-shadow:0 34px 70px -34px rgba(20,24,44,.45), 0 0 0 1px rgba(16,18,24,.06)}
+.tgstage .phone{position:absolute;left:62%;top:9%;width:40%;border-radius:clamp(20px,3vw,34px);padding:clamp(5px,.7vw,8px);transform:translateX(-50%) rotate(-4deg);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.proj:hover .tgstage .phone{transform:translateX(-50%) rotate(0deg) translateY(-6px)}
+.tgstage .tag-n{position:absolute;left:5%;bottom:8%;font-family:var(--f-serif);font-style:italic;font-size:clamp(26px,4.4vw,52px);color:#8f5e50;line-height:1}
+.tgstage .tag-n small{display:block;font-family:var(--f-mono);font-style:normal;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#a07c70;margin-top:6px}
+
+@media (max-width:900px){
+  .book{grid-template-columns:1fr}
+  .book-vis{order:-1}
+  .phone{width:min(250px,72%)}
+  .tgstage .phone{width:42%}
+}
+@media (max-width:560px){
+  .crow{grid-template-columns:1fr 1fr;gap:4px 12px;padding:12px 0}
+  .crow b{grid-column:1/-1}
+  .crow span::before{content:attr(data-l);display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2px}
+  .crow span:nth-child(3)::before{color:var(--accent)}
+  .chead{display:none}
+  .tgstage .tag-n{font-size:24px}
+}
 
 /* ---------- approach ---------- */
 .flex-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:stretch}
@@ -526,18 +586,19 @@ a.fbtn:hover .fi{background:var(--accent)}
         <div class="callout c3 left mono"><span class="ln"></span><span class="box"><small>[ В портфолио ]</small><span class="js-count">03</span> разные ниши</span></div>
       </div>
 
-      <div class="mini-hud mono">
-        <div class="mh"><small>[ Дизайн ]</small><span>с нуля под нишу</span></div>
-        <div class="mh"><small>[ Адаптив ]</small><span>375 → 1920 px</span></div>
-        <div class="mh"><small>[ В портфолио ]</small><span><span class="js-count">03</span> разные ниши</span></div>
-      </div>
 
       <div class="hero-foot">
-        <p class="lead">Меня зовут <b>Степан Семенюк</b>. Делаю сайты, веб-дизайн, Telegram-ботов и визитки. Я только начинаю, но мои работы уже совсем разные: приём металла, фитнес-клуб, мастер-парикмахер. Каждый проект собираю с нуля, чтобы вашим клиентам было удобно.</p>
+        <p class="lead">Меня зовут <b>Степан Семенюк</b>. Делаю сайты, Telegram-ботов для записи, ИИ-ассистентов и автоматизацию для бизнеса. Я только начинаю, но мои работы уже совсем разные: приём металла, фитнес-клуб, парикмахер и салон маникюра. Каждый проект собираю с нуля, чтобы вашим клиентам было удобно.</p>
         <div class="actions">
           <a class="btn glass magnetic" href="#work">Смотреть проекты</a>
           <a class="btn btn-ink magnetic" href="#contact">Написать мне <span class="arr">↗</span></a>
         </div>
+      </div>
+
+      <div class="mini-hud mono" aria-label="Коротко">
+        <div class="mh"><small>Дизайн</small><span>с нуля под нишу</span></div>
+        <div class="mh"><small>Адаптив</small><span>375 → 1920 px</span></div>
+        <div class="mh"><small>Портфолио</small><span><span class="js-count">04</span> ниши</span></div>
       </div>
     </div>
   </section>
@@ -555,7 +616,7 @@ a.fbtn:hover .fi{background:var(--accent)}
           <span class="mono eyebrow">[ Услуги ]</span>
           <h2 class="h2">Что я <em>делаю</em></h2>
         </div>
-        <p>Четыре направления, которые закрывают присутствие бизнеса в сети: от одной страницы до бота, который принимает заявки.</p>
+        <p>От одной страницы до ИИ-ассистента, который отвечает клиентам за вас. Можно заказать что-то одно или собрать всё вместе.</p>
       </div>
       <div class="svc">
         <article class="card glass">
@@ -573,19 +634,61 @@ a.fbtn:hover .fi{background:var(--accent)}
           <ul><li>Дизайн с нуля</li><li>Мобильная версия</li><li>Правки до результата</li></ul>
         </article>
         <article class="card glass">
-          <span class="tag mono">Bot</span>
-          <div class="glyph"><svg viewBox="0 0 34 34" fill="none" stroke="#101218" stroke-width="1.6"><path d="M5 9a4 4 0 0 1 4-4h16a4 4 0 0 1 4 4v11a4 4 0 0 1-4 4H14l-6 5v-5H9a4 4 0 0 1-4-4z"/><path d="M11 14h12M11 18h7" stroke="#2C38D8"/></svg></div>
-          <h3>Telegram-боты</h3>
-          <p>Бот для записи, заявок, каталога или ответов на частые вопросы. Заявки приходят вам в Telegram.</p>
-          <ul><li>Запись и заявки</li><li>Каталог и прайс</li><li>Ответы на частые вопросы</li></ul>
-        </article>
-        <article class="card glass">
           <span class="tag mono">Card</span>
           <div class="glyph"><svg viewBox="0 0 34 34" fill="none" stroke="#101218" stroke-width="1.6"><rect x="4" y="8" width="26" height="18" rx="3"/><circle cx="12" cy="16" r="3" stroke="#2C38D8"/><path d="M18 14h7M18 18h5M9 22h16"/></svg></div>
           <h3>Визитки</h3>
           <p>Сайт-визитка о вас и вашем деле: кто вы, услуги, цены, контакты. Ссылку удобно отправить или поставить в QR-код.</p>
           <ul><li>Одна страница</li><li>Кнопки мессенджеров</li><li>QR-код на ссылку</li></ul>
         </article>
+        <article class="card glass">
+          <span class="tag mono">Bot</span>
+          <div class="glyph"><svg viewBox="0 0 34 34" fill="none" stroke="#101218" stroke-width="1.6"><rect x="5" y="7" width="24" height="22" rx="4"/><path d="M5 13h24M11 4v6M23 4v6"/><path d="M11 21l3.5 3.5L23 17" stroke="#2C38D8"/></svg></div>
+          <h3>Запись в Telegram</h3>
+          <p>Бот или мини-приложение, где клиенты сами выбирают услугу и время. Замена DIKIDI, YCLIENTS и похожим сервисам.</p>
+          <ul><li>Услуги и цены</li><li>Запись в пару нажатий</li><li>Заявки сразу вам</li></ul>
+        </article>
+        <article class="card glass">
+          <span class="tag mono">AI</span>
+          <div class="glyph"><svg viewBox="0 0 34 34" fill="none" stroke="#101218" stroke-width="1.6"><path d="M15 4l2.6 7.4L25 14l-7.4 2.6L15 24l-2.6-7.4L5 14l7.4-2.6z"/><path d="M26 21l1.2 3.3 3.3 1.2-3.3 1.2L26 30l-1.2-3.3-3.3-1.2 3.3-1.2z" stroke="#2C38D8"/></svg></div>
+          <h3>ИИ-ассистент</h3>
+          <p>Отвечает клиентам в Telegram за вас днём и ночью: по вашим услугам, ценам и правилам. Если вопрос сложный или что-то пошло не так, зовёт вас.</p>
+          <ul><li>Ответы 24/7</li><li>Запись и сбор заявок</li><li>Передаёт диалог вам при проблеме</li></ul>
+        </article>
+        <article class="card glass">
+          <span class="tag mono">Auto</span>
+          <div class="glyph"><svg viewBox="0 0 34 34" fill="none" stroke="#101218" stroke-width="1.6"><path d="M27 13a11 11 0 0 0-19.5-4.5M7 21a11 11 0 0 0 19.5 4.5"/><path d="M7 4v5h5M27 30v-5h-5"/><path d="M13 17h8M17 13v8" stroke="#2C38D8"/></svg></div>
+          <h3>Автоматизация</h3>
+          <p>Убираю ручную рутину: заявки сами попадают в таблицу или CRM, клиентам уходят уведомления, а вы видите всё в одном месте.</p>
+          <ul><li>Заявки в таблицу или CRM</li><li>Уведомления и напоминания</li><li>Связка сайта, бота и таблиц</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section class="sec" id="booking" style="padding-top:0">
+    <div class="wrap">
+      <div class="book glass">
+        <div class="book-txt">
+          <span class="mono eyebrow">[ Запись в Telegram ]</span>
+          <h2 class="h2">Своя запись <em>без подписок</em></h2>
+          <p class="book-lead">Вместо DIKIDI, YCLIENTS и похожих сервисов клиенты записываются через вашего бота прямо в Telegram. Ничего не нужно скачивать и регистрироваться, а заявка сразу приходит вам.</p>
+          <div class="cmp" role="table" aria-label="Сравнение с сервисами записи">
+            <div class="crow chead" role="row"><span role="columnheader"></span><span role="columnheader" class="mono">Сервисы записи</span><span role="columnheader" class="mono acc">Ваш бот</span></div>
+            <div class="crow" role="row"><b role="rowheader">Где записаться</b><span role="cell" data-l="Сервисы">Приложение или сайт сервиса</span><span role="cell" data-l="Ваш бот">Прямо в Telegram, без регистрации</span></div>
+            <div class="crow" role="row"><b role="rowheader">Оплата</b><span role="cell" data-l="Сервисы">Тариф сервиса, часто ежемесячный</span><span role="cell" data-l="Ваш бот">Разовая настройка, без абонентской платы</span></div>
+            <div class="crow" role="row"><b role="rowheader">Оформление</b><span role="cell" data-l="Сервисы">Логотип и шаблон сервиса</span><span role="cell" data-l="Ваш бот">Ваше название, услуги и цены</span></div>
+            <div class="crow" role="row"><b role="rowheader">Заявки</b><span role="cell" data-l="Сервисы">В кабинете сервиса</span><span role="cell" data-l="Ваш бот">Сразу вам в Telegram</span></div>
+          </div>
+          <div class="actions book-act">
+            <a class="btn glass magnetic" href="https://t.me/cramenail_bot" target="_blank" rel="noopener">Пример: Crème Nails ↗</a>
+            <a class="btn btn-ink magnetic" href="#contact">Хочу такого бота <span class="arr">↗</span></a>
+          </div>
+        </div>
+        <a class="book-vis" href="https://t.me/cramenail_bot" target="_blank" rel="noopener" data-cursor="Открыть ↗" aria-label="Открыть бота Crème Nails в Telegram">
+          <div class="phone" id="bookPhone"></div>
+          <span class="mono book-cap">@cramenail_bot · пример для салона маникюра</span>
+        </a>
       </div>
     </div>
   </section>
@@ -598,7 +701,7 @@ a.fbtn:hover .fi{background:var(--accent)}
           <span class="mono eyebrow">[ Портфолио ]</span>
           <h2 class="h2">Мои <em>проекты</em><sup class="js-count">03</sup></h2>
         </div>
-        <p>Три ниши, три разных дизайна. Нажмите на проект, чтобы открыть сайт.</p>
+        <p>Разные ниши и разные дизайны: сайты и бот для записи. Нажмите на проект, чтобы открыть его.</p>
       </div>
       <div class="plist" id="plist"></div>
     </div>
@@ -661,7 +764,9 @@ a.fbtn:hover .fi{background:var(--accent)}
         <details class="glass"><summary><span class="i">02</span><span>Сделаете сайт для моей ниши?</span><span class="pl">+</span></summary><div class="ans">Да. Ниша влияет на структуру и стиль сайта, а не на то, возьмусь ли я. В портфолио уже есть приём металла, фитнес и бьюти.</div></details>
         <details class="glass"><summary><span class="i">03</span><span>Сайт будет нормально работать на телефоне?</span><span class="pl">+</span></summary><div class="ans">Да. Каждый сайт собираю сразу под телефоны и компьютеры и проверяю на экранах разной ширины.</div></details>
         <details class="glass"><summary><span class="i">04</span><span>Можно потом поменять цены и тексты?</span><span class="pl">+</span></summary><div class="ans">Да. Покажу, как это сделать, или внесу правки сам.</div></details>
-        <details class="glass"><summary><span class="i">05</span><span>Зачем мне Telegram-бот?</span><span class="pl">+</span></summary><div class="ans">Если вам часто пишут с одинаковыми вопросами или хотят записаться, бот ответит сам и пришлёт заявку вам. Обсудим, нужен ли он именно вашему делу.</div></details>
+        <details class="glass"><summary><span class="i">05</span><span>Чем свой бот для записи лучше DIKIDI или YCLIENTS?</span><span class="pl">+</span></summary><div class="ans">Клиент записывается прямо в Telegram, ничего не скачивая и не регистрируясь. В боте ваше название, ваши услуги и цены, а заявки приходят вам сразу. За настройку вы платите один раз, без ежемесячной подписки на сервис записи.</div></details>
+        <details class="glass"><summary><span class="i">06</span><span>Что умеет ИИ-ассистент?</span><span class="pl">+</span></summary><div class="ans">Он отвечает клиентам в Telegram по вашим данным: услуги, цены, адрес, правила записи. Может записать клиента или собрать заявку. Если вопрос сложный, клиент недоволен или нужно ваше решение, ассистент сообщает вам и передаёт диалог.</div></details>
+        <details class="glass"><summary><span class="i">07</span><span>Можно автоматизировать то, что я сейчас делаю вручную?</span><span class="pl">+</span></summary><div class="ans">Часто да. Опишите, что повторяется каждый день: перенос заявок в таблицу, ответы на одни и те же сообщения, напоминания клиентам. Подскажу, что из этого можно отдать боту или скрипту.</div></details>
       </div>
     </div>
   </section>
@@ -686,8 +791,10 @@ a.fbtn:hover .fi{background:var(--accent)}
             <div class="chips">
               <label><input type="checkbox" id="f-s1" value="Сайт" checked><span>Сайт</span></label>
               <label><input type="checkbox" id="f-s2" value="Веб-дизайн"><span>Веб-дизайн</span></label>
-              <label><input type="checkbox" id="f-s3" value="Telegram-бот"><span>Telegram-бот</span></label>
+              <label><input type="checkbox" id="f-s3" value="Telegram-бот"><span>Бот для записи</span></label>
               <label><input type="checkbox" id="f-s4" value="Визитка"><span>Визитка</span></label>
+              <label><input type="checkbox" id="f-s5" value="ИИ-ассистент"><span>ИИ-ассистент</span></label>
+              <label><input type="checkbox" id="f-s6" value="Автоматизация"><span>Автоматизация</span></label>
             </div>
           </fieldset>
           <label for="f-contact"><span class="mono">Как с вами связаться</span><input id="f-contact" name="contact" placeholder="Telegram, телефон или почта"></label>
@@ -720,7 +827,7 @@ a.fbtn:hover .fi{background:var(--accent)}
     <div class="fgrid">
       <div class="fbrand">
         <a class="pill glass logo flogo" href="#top" aria-label="Степан Семенюк, наверх">С<i>/</i>С</a>
-        <p>Сайты, веб-дизайн, Telegram-боты и визитки под любую нишу.</p>
+        <p>Сайты, боты для записи, ИИ-ассистенты и автоматизация под любую нишу.</p>
       </div>
       <nav class="fnav" aria-label="Разделы в подвале">
         <span class="mono">Разделы</span>
@@ -733,7 +840,7 @@ a.fbtn:hover .fi{background:var(--accent)}
     </div>
     <div class="foot">
       <span class="mono">© <span id="yr">2026</span> Степан Семенюк</span>
-      <span class="mono">Сайты · Веб-дизайн · Telegram-боты · Визитки</span>
+      <span class="mono">Сайты · Боты для записи · ИИ-ассистенты · Автоматизация</span>
       <a class="mono" href="#top">Наверх ↑</a>
     </div>
   </div>
@@ -789,6 +896,16 @@ const PROJECTS = [
     desc: "Визитка мастера с тридцатилетним стажем: история, прайс по длине волос, галерея дипломов и быстрые кнопки для записи.",
     features: ["Прайс S / M / L", "Галерея дипломов", "О мастере", "Telegram, VK, MAX"],
     look: "salon"
+  },
+  {
+    niche: "Салон маникюра",
+    kind: "Telegram-бот",
+    title: "Crème Nails",
+    url: "https://t.me/cramenail_bot",
+    cta: "Открыть бота",
+    desc: "Бот для записи в салон маникюра. Клиент смотрит услуги и цены и записывается прямо в Telegram, без приложений и регистрации.",
+    features: ["Услуги и цены", "Запись в пару нажатий", "Без приложений", "Замена DIKIDI и YCLIENTS"],
+    look: "tg"
   }
 ];
 
@@ -805,12 +922,28 @@ const host = u => { try { const x = new URL(u); return (x.hostname + x.pathname)
 const ICON_TG = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M21.4 4.3 2.9 11.4c-1.2.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .7-.2 1-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.5-1.5ZM8.9 14.1l9.6-6.1c.5-.3.9-.1.5.2l-8.2 7.4-.3 3.4-1.6-4.9Z"/></svg>`;
 const ICON_VK = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12.8 18C6.3 18 2.6 13.5 2.4 6h3.3c.1 5.5 2.5 7.8 4.4 8.3V6h3.1v4.7c1.9-.2 3.9-2.4 4.5-4.7h3.1c-.5 2.9-2.6 5-4.1 5.9 1.5.7 3.9 2.6 4.8 6.1h-3.4c-.7-2.3-2.5-4.1-4.9-4.3V18h-.4Z"/></svg>`;
 
+// Нарисованный экран бота Crème Nails (используется в блоке «Запись» и в проекте).
+const TG_SCREEN = `
+  <div class="tg">
+    <div class="tg-top"><span class="tg-av">C</span><span><b>Crème Nails</b><small>бот</small></span></div>
+    <div class="tg-body">
+      <div class="tg-m">Здравствуйте! Это Crème Nails. Выберите услугу:</div>
+      <div class="tg-kb"><span class="on">Маникюр</span><span>Покрытие</span><span>Дизайн</span><span>Цены</span></div>
+      <div class="tg-m me">Маникюр с покрытием</div>
+      <div class="tg-m">Свободное время в пятницу:</div>
+      <div class="tg-kb"><span>11:00</span><span class="on">13:30</span><span>16:00</span><span>18:30</span></div>
+      <div class="tg-m tg-ok">Готово, вы записаны на пятницу, 13:30</div>
+    </div>
+    <div class="tg-in">Сообщение</div>
+  </div>`;
+
 const MOCKS = {
+  tg: p => `<div class="tgstage"><div class="phone" aria-hidden="true">${TG_SCREEN}</div><span class="tag-n">Crème<br>Nails<small>Запись в Telegram</small></span></div>`,
   metal: p => `
     <div class="mock m-metal"><div class="mbar"><i></i><i></i><i></i><span>${esc(host(p.url))}</span></div>
       <div class="mbody">
         <div class="mtop">
-          <div class="mnav"><b>ШАБЛОН<small>приём металлолома</small></b><span>Цены</span><span>Калькулятор</span><span>Справочник</span><em>+7 (000) 000-00-00</em></div>
+          <div class="mnv"><b>ШАБЛОН<small>приём металлолома</small></b><span>Цены</span><span>Калькулятор</span><span>Справочник</span><em>+7 (000) 000-00-00</em></div>
           <div class="mhero">
             <div><div class="eb">Пункт приёма металлолома</div><div class="rule"></div><h5>Сдайте металл по честной цене</h5>
               <p class="p">Цветной и чёрный лом. Взвешиваем при вас, платим сразу.</p>
@@ -848,13 +981,13 @@ function projectCard(p, i) {
     ? `<img class="shot" src="${esc(p.image)}" alt="Скриншот сайта ${esc(p.title)}" loading="lazy">`
     : (MOCKS[p.look] ? MOCKS[p.look](p) : `<div class="mock"><div class="mbar"><i></i><i></i><i></i><span>${esc(host(p.url))}</span></div></div>`);
   return `
-  <a class="proj glass" href="${esc(p.url)}" target="_blank" rel="noopener" data-cursor="Открыть ↗">
+  <a class="proj glass" href="${esc(p.url)}" target="_blank" rel="noopener">
     <div class="pinfo">
       <div class="pmeta mono"><span class="num">${pad(i + 1)}</span><span class="chip">${esc(p.niche)}</span><span class="kind">${esc(p.kind || "")}</span></div>
       <h3>${esc(p.title)}</h3>
       <p>${esc(p.desc)}</p>
       <ul class="feat">${(p.features || []).map(f => `<li>${esc(f)}</li>`).join("")}</ul>
-      <span class="plink">Открыть сайт <i>↗</i></span>
+      <span class="plink">${esc(p.cta || "Открыть сайт")} <i>↗</i></span>
     </div>
     <div class="pvis">${vis}</div>
   </a>`;
@@ -905,6 +1038,7 @@ function render() {
   $("#fcontacts").innerHTML = foot.join("");
   $("#tgBtn").href = CONTACTS.telegram ? "https://t.me/" + CONTACTS.telegram : "#contact";
   $("#yr").textContent = new Date().getFullYear();
+  $("#bookPhone").innerHTML = TG_SCREEN;
 }
 render();
 
@@ -1014,7 +1148,7 @@ if (!reduce) {
 
 if (fine && !reduce) {
   // мягкий блик на стеклянных карточках под курсором
-  document.querySelectorAll(".card, .proj, .step, .faq details, .fbtn, .clist a, .spec").forEach(el => {
+  document.querySelectorAll(".card, .proj, .step, .faq details, .fbtn, .clist a, .spec, .book").forEach(el => {
     el.classList.add("sheen");
     let r = null, raf = 0, ex = 0, ey = 0;
     el.addEventListener("pointerenter", () => { r = el.getBoundingClientRect(); });

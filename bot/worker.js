@@ -24,7 +24,7 @@ async function hookSecret(env) {
   return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("").slice(0, 48);
 }
 
-const SERVICES = ["Сайт", "Веб-дизайн", "Telegram-бот", "Визитка", "Другое"];
+const SERVICES = ["Сайт", "Веб-дизайн", "Telegram-бот", "Визитка", "ИИ-ассистент", "Автоматизация", "Другое"];
 
 const tg = (env, method, body) =>
   fetch(`https://api.telegram.org/bot${env.BOT_TOKEN}/${method}`, {
@@ -115,15 +115,16 @@ async function handleUpdate(req, env) {
 function greet(chatId, env) {
   const rows = [
     [{ text: "Сайт", callback_data: "svc:0" }, { text: "Веб-дизайн", callback_data: "svc:1" }],
-    [{ text: "Telegram-бот", callback_data: "svc:2" }, { text: "Визитка", callback_data: "svc:3" }],
-    [{ text: "Другое", callback_data: "svc:4" }],
+    [{ text: "Бот для записи", callback_data: "svc:2" }, { text: "Визитка", callback_data: "svc:3" }],
+    [{ text: "ИИ-ассистент", callback_data: "svc:4" }, { text: "Автоматизация", callback_data: "svc:5" }],
+    [{ text: "Другое", callback_data: "svc:6" }],
   ];
   rows.push([{ text: "Посмотреть мои работы ↗", url: env.SITE_URL || DEFAULT_SITE }]);
   return tg(env, "sendMessage", {
     chat_id: chatId,
     text:
       "Здравствуйте! Я бот Степана Семенюка.\n\n" +
-      "Степан делает сайты, веб-дизайн, Telegram-ботов и визитки под любую нишу.\n\n" +
+      "Степан делает сайты, ботов для записи, ИИ-ассистентов и автоматизацию под любую нишу.\n\n" +
       "Что вам нужно?",
     reply_markup: { inline_keyboard: rows },
   });
@@ -215,7 +216,7 @@ async function setup(url, env) {
   });
   await tg(env, "setMyCommands", { commands: [{ command: "start", description: "Оставить заявку" }] });
   await tg(env, "setMyShortDescription", {
-    short_description: "Заявки на сайты, веб-дизайн, Telegram-ботов и визитки. Степан Семенюк.",
+    short_description: "Заявки на сайты, ботов для записи, ИИ-ассистентов и автоматизацию. Степан Семенюк.",
   });
   const me = await tg(env, "getMe", {});
   return text(
