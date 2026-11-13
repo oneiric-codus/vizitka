@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#3f0915">
+<meta name="description" content="Авторский курс «Колорист с нуля» у Юлии в Уфе: 7 дней, индивидуально, отработка на моделях, сертификат и поддержка 6 месяцев. Старт 23 ноября, 2 места.">
+<meta property="og:title" content="Колорист с нуля — курс в Уфе">
+<meta property="og:description" content="7 дней, индивидуально, офлайн. Старт 23 ноября, всего 2 места.">
+<meta property="og:image" content="https://oneiric-codus.github.io/vizitka/kolorist/img/hair4.webp">
+<link rel="icon" href="img/rose.webp">
+<title>Колорист с нуля</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&display=swap">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: wine-red frame (the rose), a frosted blush glass column floating over it, roses spinning
+   like tops behind the glass as you scroll. Tall Didone caps + a script accent, as in the reference.
+   Signature: a mannequin whose hair changes colour in a wave on every tap. */
+:root{
+  --wine:#3f0915;
+  --wine-2:#5c0d21;
+  --rose:#8e1130;
+  --rose-hot:#b3163f;
+  --blush:#fdf1f3;
+  --blush-2:#f7dfe5;
+  --glass:rgba(255,241,244,.66);
+  --glass-strong:rgba(255,245,247,.86);
+  --ink:#2b0811;
+  --quiet:#86606a;
+  --line:rgba(120,16,44,.16);
+  --serif:"Playfair Display","Didot","Bodoni 72",Georgia,serif;
+  --script:"Great Vibes","Segoe Script",cursive;
+  --text:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--wine);color:var(--ink);font-family:var(--text);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--wine)}
+h1,h2,h3,p,b,span,li,summary,dd{overflow-wrap:break-word}
+h1,h2,h3{font-family:var(--serif);font-weight:700;text-wrap:balance;margin:0;hyphens:manual}
+p{margin:0;hyphens:auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rose-hot);outline-offset:3px}
+.rose{background:url(img/rose.webp) center/contain no-repeat}
+
+/* background roses — behind the glass */
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+  background:radial-gradient(120% 80% at 50% 0%,#6a1027 0%,var(--wine) 55%,#2a050e 100%)}
+.bg .r{position:absolute;perspective:700px}
+.bg .r i{display:block;width:100%;height:100%;will-change:transform;filter:drop-shadow(0 30px 40px rgba(0,0,0,.45))}
+.r1{width:340px;height:340px;left:-110px;top:70px}
+.r2{width:260px;height:260px;right:-80px;top:38%}
+.r3{width:420px;height:420px;left:-150px;bottom:-140px}
+.r4{width:220px;height:220px;right:6%;bottom:6%}
+.r5{width:180px;height:180px;left:44%;top:-60px}
+
+/* page column = frosted glass */
+.page{position:relative;z-index:1;max-width:1160px;margin:0 auto;background:var(--glass);
+  -webkit-backdrop-filter:blur(22px) saturate(1.2);backdrop-filter:blur(22px) saturate(1.2);
+  box-shadow:0 0 0 1px rgba(255,255,255,.25),0 40px 120px rgba(0,0,0,.45)}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+
+/* sticky header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(63,9,21,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);color:#fff;border-bottom:1px solid rgba(255,255,255,.1)}
+.top .row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.brand .logo{width:46px;height:46px;flex:none;perspective:300px}
+.brand .logo i{display:block;width:100%;height:100%}
+.brand b{display:block;font-family:var(--serif);font-size:20px;font-weight:700;line-height:1.1}
+.brand small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#e6b9c4}
+.nav{display:flex;gap:4px;align-items:center}
+.nav a{text-decoration:none;font-size:14px;font-weight:600;color:#f4d6dd;padding:8px 12px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s}
+.nav a:hover,.nav a.act{background:rgba(255,255,255,.12);color:#fff}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;font:700 15px/1.1 var(--text);padding:17px 28px;border-radius:999px;text-decoration:none;text-align:center;transition:transform .2s var(--ease),background .2s,box-shadow .2s}
+.btn-red{background:var(--rose-hot);color:#fff;box-shadow:0 14px 30px -12px rgba(179,22,63,.9)}
+.btn-red::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);animation:shine 4.5s ease-in-out infinite 1.5s}
+@keyframes shine{0%,70%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.btn-red:hover{background:#c91a49;transform:translateY(-2px)}
+.btn-light{background:#fff;color:var(--rose)}
+.btn-light:hover{transform:translateY(-2px)}
+.btn-line{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6)}
+.btn-line:hover{background:#fff;color:var(--wine)}
+.btn-sm{padding:11px 18px;font-size:14px}
+.btn .arr{transition:transform .2s}
+.btn:hover .arr{transform:translateX(4px)}
+.navrow{display:none}
+
+/* hero */
+.hero{position:relative;background:linear-gradient(180deg,var(--wine-2) 0%,#4a0a1a 100%);color:#fff;overflow:hidden;padding-block:40px 56px}
+.hero .eyebrow{color:#eebfca;position:relative;z-index:3;text-shadow:0 1px 8px rgba(40,4,12,.6)}
+.title{position:relative;text-align:center;margin-top:10px}
+.title h1{font-weight:500;text-transform:uppercase;line-height:.8;letter-spacing:-.02em;white-space:nowrap;display:inline-block;transform:scaleY(1.38);transform-origin:50% 100%;font-size:150px;position:relative;z-index:2;
+  background:linear-gradient(180deg,#fff 40%,#f5cdd7);-webkit-background-clip:text;background-clip:text;color:transparent;animation:titleIn 1.2s var(--ease) both}
+@keyframes titleIn{from{opacity:.0;letter-spacing:.1em}to{opacity:1;letter-spacing:-.02em}}
+.title .scr{display:block;font-family:var(--script);font-weight:400;font-size:clamp(64px,13vw,150px);line-height:.7;color:#ff9fb4;margin-top:-.08em;position:relative;z-index:3;text-shadow:0 6px 30px rgba(0,0,0,.35);animation:fadeUp 1s var(--ease) .4s both}
+.hero .bigrose{position:absolute;left:50%;top:44%;width:min(70vw,480px);aspect-ratio:1;transform:translate(-50%,-50%);z-index:1;perspective:900px;opacity:.95}
+.hero .bigrose i{display:block;width:100%;height:100%;filter:drop-shadow(0 40px 60px rgba(0,0,0,.6))}
+.herogrid{position:relative;z-index:4;display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:end;margin-top:28px}
+.herogrid>*{min-width:0}
+.lead{font-size:19px;max-width:30ch;color:#fbe3e8}
+.lead b{color:#fff;font-weight:700}
+.ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--quiet)}
+@keyframes fadeUp{from{opacity:.0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.fade{animation:fadeUp .9s var(--ease) both}.d1{animation-delay:.5s}.d2{animation-delay:.65s}.d3{animation-delay:.8s}
+
+.start{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-radius:24px;padding:24px;display:grid;gap:18px}
+.start .date{font-family:var(--serif);font-size:44px;font-weight:600;line-height:1}
+.timer{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.timer div{background:rgba(255,255,255,.12);border-radius:14px;padding:10px 4px;text-align:center}
+.timer b{display:block;font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1}
+.timer span{font-size:10.5px;color:#f1c9d3;text-transform:uppercase;letter-spacing:.1em}
+.seats{display:flex;align-items:center;gap:14px}
+.seat{position:relative;width:38px;height:38px;border-radius:50%;background:#fff;color:var(--rose);display:grid;place-items:center;font-weight:800;flex:none}
+.seat::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid #fff;animation:pulse 2s ease-out infinite}
+@keyframes pulse{from{transform:scale(.8);opacity:.9}to{transform:scale(1.35);opacity:0}}
+.seats p{font-weight:700;min-width:0}
+.seats p span{display:block;font-weight:500;color:#f1c9d3;font-size:14px}
+.pmini{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.2);padding-top:16px}
+.pmini b{font-size:30px;font-weight:800}
+.pmini s{color:#e6aab8}
+.pmini small{width:100%;color:#f1c9d3;font-size:13px}
+
+/* sections */
+section.block{padding-block:84px}
+.sh{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px 40px;align-items:end;margin-bottom:40px}
+.sh h2{font-size:clamp(34px,6vw,64px);line-height:1;text-transform:uppercase;font-weight:800;letter-spacing:-.01em;color:var(--wine)}
+.sh h2 .scr{font-family:var(--script);text-transform:none;font-weight:400;color:var(--rose-hot);font-size:1.15em;letter-spacing:0;display:inline-block;margin-left:.1em}
+.sh p{color:var(--quiet);max-width:46ch}
+
+/* reveal */
+.rv{transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.pre{opacity:0;transform:translateY(30px)}
+.rv.pre.zoom{transform:scale(.94)}
+
+/* mannequin */
+.studio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center;background:linear-gradient(160deg,var(--wine-2),var(--wine));border-radius:32px;padding:36px;color:#fff;overflow:hidden}
+.studio>*{min-width:0}
+.stage{position:relative;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;max-width:420px;width:100%;margin-inline:auto;aspect-ratio:2/3;border-radius:24px;overflow:hidden;background:#3e0712;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.stage .hp{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;-webkit-user-drag:none}
+.stage .nx{visibility:hidden;clip-path:polygon(0 0,100% 0,100% 0,0 0);will-change:clip-path}
+.stage .hl{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;filter:drop-shadow(0 0 6px rgba(255,255,255,.9)) drop-shadow(0 0 14px rgba(255,190,205,.7))}
+.tap{position:absolute;left:50%;top:26%;transform:translateX(-50%);white-space:nowrap;display:flex;align-items:center;gap:8px;background:#fff;color:var(--rose);font-weight:700;font-size:13px;padding:8px 14px 8px 8px;border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.3);pointer-events:none;transition:opacity .4s}
+.tap i{width:22px;height:22px;border-radius:50%;background:var(--rose-hot);position:relative}
+.tap i::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--rose-hot);animation:pulse 1.6s ease-out infinite}
+.tap.hide{opacity:0}
+.info .step{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#f1c9d3}
+.info h3{font-size:clamp(30px,4vw,46px);line-height:1.05;margin-top:10px;min-height:2.1em}
+.info p{color:#f6d6de;margin-top:14px;min-height:4.8em;max-width:40ch}
+.dots{display:flex;gap:8px;margin-top:22px}
+.dots span{width:28px;height:4px;border-radius:4px;background:rgba(255,255,255,.25);transition:background .3s}
+.dots span.on{background:#fff}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips button{border:1px solid rgba(255,255,255,.35);background:transparent;color:#fff;font:600 13px var(--text);padding:9px 14px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+.chips button.on,.chips button:hover{background:#fff;color:var(--rose)}
+.next{margin-top:24px}
+
+/* facts: dark cards like the reference */
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.fact{background:linear-gradient(170deg,var(--rose),var(--wine-2));color:#fff;border-radius:20px;padding:24px 22px;display:grid;gap:8px;align-content:start;min-height:200px;transition:transform .3s var(--ease)}
+.fact:hover{transform:translateY(-4px)}
+.fact .k{font-family:var(--serif);font-size:56px;font-weight:600;line-height:1}
+.fact b{font-family:var(--serif);font-size:21px;font-weight:700;line-height:1.15}
+.fact span{font-size:14px;color:#f3cdd6}
+
+/* programme */
+.days{position:relative;padding-left:46px}
+.days::before{content:"";position:absolute;left:11px;top:10px;bottom:10px;width:2px;background:var(--line)}
+.days .fill{position:absolute;left:11px;top:10px;width:2px;height:0;background:linear-gradient(#141012,#5a2a22 30%,#b98a4e 62%,#ecdcc0)}
+.day{position:relative;display:grid;grid-template-columns:110px minmax(0,1fr) minmax(0,1.3fr);gap:24px;padding:22px 0;border-bottom:1px solid var(--line);align-items:start}
+.day .dot{position:absolute;left:-46px;top:26px;width:24px;height:24px;border-radius:50%;background:var(--blush);border:2px solid var(--line);transition:background .5s,transform .5s var(--ease)}
+.day.on .dot{transform:scale(1.15);border-color:#fff}
+.day .n{font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--quiet);padding-top:6px;transition:color .3s}
+.day.on .n{color:var(--rose-hot)}
+.day h3{font-size:26px;line-height:1.15;color:var(--wine)}
+.day p{color:var(--quiet);font-size:15px;padding-top:4px}
+
+/* gets */
+.gets{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.get{background:var(--glass-strong);border:1px solid rgba(255,255,255,.7);border-radius:20px;padding:22px;display:grid;gap:10px;align-content:start}
+.get .ic{width:48px;height:48px;border-radius:14px;background:var(--rose);color:#fff;display:grid;place-items:center}
+.get .ic svg{width:24px;height:24px}
+.get b{font-size:17px;font-weight:700;line-height:1.25}
+.get p{color:var(--quiet);font-size:14.5px}
+
+/* grads */
+.grads{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.grads figure{margin:0;display:grid;gap:12px}
+.ph{overflow:hidden;border-radius:22px;aspect-ratio:3/4;max-width:100%;box-shadow:0 24px 50px -24px rgba(63,9,21,.6)}
+.ph img{width:100%;height:116%;object-fit:cover;display:block;transform:translateY(var(--py,0px))}
+.grads figcaption{font-size:14px;color:var(--quiet)}
+.grads figcaption b{display:block;color:var(--wine);font-size:16px}
+.quote{align-self:stretch;display:grid;gap:16px;align-content:center}
+.quote p.q{font-family:var(--serif);font-size:clamp(28px,3.2vw,40px);line-height:1.12;color:var(--wine);hyphens:manual}
+.quote p.q em{font-family:var(--script);font-style:normal;color:var(--rose-hot);font-size:1.3em}
+.quote span{color:var(--quiet);font-size:15px}
+.grads figure:nth-of-type(2){margin-top:56px}
+
+/* price */
+.pricebox{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);border-radius:32px;overflow:hidden;background:linear-gradient(150deg,var(--rose),var(--wine));color:#fff}
+.pricebox>div{padding:40px;display:grid;gap:16px;align-content:start;min-width:0}
+.pricebox .r{background:rgba(255,255,255,.08)}
+.big{font-family:var(--serif);font-size:clamp(52px,8vw,96px);font-weight:600;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.old{font-size:18px;color:#f1c9d3}
+.old s{position:relative;text-decoration:none;color:#fff}
+.old s::after{content:"";position:absolute;left:-2px;right:-2px;top:52%;height:2px;background:#ff9fb4;transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease) .3s}
+.pricebox.in .old s::after{transform:scaleX(1)}
+.pricebox .note{color:#f1c9d3}
+.r ul{margin:0;padding:0;display:grid;gap:12px}
+.r li{list-style:none;padding-left:28px;position:relative}
+.r li::before{content:"";position:absolute;left:2px;top:.42em;width:14px;height:8px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg)}
+
+/* bot */
+.botgrid{display:grid;grid-template-columns:400px minmax(0,1fr);gap:56px;align-items:center}
+.phone{border:10px solid #1a0409;border-radius:44px;overflow:hidden;background:#efe6e9;height:660px;display:flex;flex-direction:column;max-width:100%;box-shadow:0 40px 70px -35px rgba(63,9,21,.7)}
+.tgbar{background:#fff;display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid #eadde1}
+.ava{width:40px;height:40px;border-radius:50%;flex:none;background-color:var(--wine);background-size:86%}
+.tgbar b{display:block;font-size:15px}
+.tgbar span{font-size:12px;color:var(--quiet)}
+.typing{display:inline-flex;gap:3px;margin-left:4px}
+.typing i{width:4px;height:4px;border-radius:50%;background:var(--quiet);animation:blink 1s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{50%{opacity:.2}}
+.chat{flex:1;overflow-y:auto;padding:16px 12px;display:flex;flex-direction:column;gap:8px}
+.msg{max-width:86%;padding:10px 13px;border-radius:16px;font-size:14.5px;line-height:1.45;white-space:pre-line;animation:pop .28s var(--ease) both}
+.msg.bot{background:#fff;align-self:flex-start;border-bottom-left-radius:5px}
+.msg.me{background:#fbd9e1;align-self:flex-end;border-bottom-right-radius:5px}
+.msg b{font-weight:800}
+.kb{display:grid;gap:6px;align-self:stretch;animation:pop .28s var(--ease) both}
+.kb button{background:rgba(255,255,255,.85);border:1px solid #e3d3d8;border-radius:12px;padding:11px;font:600 14px var(--text);color:var(--ink);cursor:pointer}
+.kb button:hover{background:#fff}
+.kb button.hot{background:var(--rose-hot);border-color:var(--rose-hot);color:#fff}
+.inputbar{display:flex;gap:8px;padding:10px;background:#fff;border-top:1px solid #eadde1}
+.inputbar input{flex:1;min-width:0;border:1px solid #eadde1;border-radius:999px;padding:11px 16px;font:500 16px var(--text);color:var(--ink);background:#fff}
+.inputbar input:disabled{background:#f6eff1}
+.inputbar button{width:44px;height:44px;border-radius:50%;border:0;background:var(--rose-hot);color:#fff;font-size:18px;cursor:pointer;flex:none}
+.inputbar button:disabled{background:#dccdd2;cursor:default}
+@keyframes pop{from{opacity:.0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+.side{display:grid;gap:28px;min-width:0}
+.side h3{font-size:clamp(30px,4vw,46px);line-height:1.05;color:var(--wine);text-transform:uppercase;font-weight:800}
+.side h3 em{font-family:var(--script);text-transform:none;font-style:normal;font-weight:400;color:var(--rose-hot);font-size:1.2em}
+.steps{display:grid;gap:18px;margin:0;padding:0;counter-reset:s}
+.steps li{list-style:none;display:grid;grid-template-columns:36px minmax(0,1fr);gap:14px;font-size:15px}
+.steps li::before{counter-increment:s;content:counter(s);width:36px;height:36px;border-radius:50%;background:var(--rose);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:800}
+.steps li b{font-size:16px}
+.steps li span{color:var(--quiet)}
+
+/* faq */
+.faq{display:grid;gap:10px}
+details{background:var(--glass-strong);border:1px solid rgba(255,255,255,.7);border-radius:18px;padding:18px 22px}
+summary{cursor:pointer;font-weight:700;font-size:17px;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";flex:none;width:30px;height:30px;border-radius:50%;background:var(--rose) linear-gradient(#fff,#fff) center/12px 2px no-repeat;transition:transform .3s var(--ease)}
+details:not([open]) summary::after{background:linear-gradient(#fff,#fff) center/12px 2px no-repeat,linear-gradient(#fff,#fff) center/2px 12px no-repeat,var(--rose)}
+details[open] summary::after{transform:rotate(180deg)}
+details p{color:var(--quiet);margin-top:12px;max-width:65ch}
+
+/* final */
+.final{position:relative;overflow:hidden;background:linear-gradient(170deg,var(--wine-2),var(--wine));color:#fff}
+.final .wrap{position:relative;z-index:2;padding-block:88px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:32px;align-items:end}
+.final h2{font-size:clamp(38px,6vw,72px);line-height:1;text-transform:uppercase;font-weight:800}
+.final h2 em{display:block;font-family:var(--script);text-transform:none;font-style:normal;font-weight:400;color:#ff9fb4;font-size:1.1em;margin-top:.1em}
+.final p{color:#f1c9d3;margin-top:16px}
+.final .addr{color:#fff;font-weight:600}
+.final .btn{justify-self:start}
+.final .fr{position:absolute;right:-90px;bottom:-110px;width:380px;height:380px;perspective:800px;opacity:.9;z-index:1}
+.final .fr i{display:block;width:100%;height:100%}
+footer{background:var(--wine);color:#d9a5b2}
+footer .wrap{padding-block:22px;font-size:13px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:980px){
+  .nav{display:none}
+  .navrow{display:flex;gap:6px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none;margin-right:calc(-1 * max(20px,env(safe-area-inset-right,0px)))}
+  .navrow::-webkit-scrollbar{display:none}
+  .navrow a{flex:none;text-decoration:none;font-size:13px;font-weight:600;color:#f4d6dd;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.1)}
+  .navrow a.act{background:#fff;color:var(--wine)}
+  .herogrid,.studio,.pricebox,.botgrid,.final .wrap,.sh{grid-template-columns:minmax(0,1fr)}
+  .facts,.gets{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .day{grid-template-columns:minmax(0,1fr);gap:6px}
+  .grads{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .quote{grid-column:1/-1;order:-1}
+  .grads figure:nth-of-type(2){margin-top:0}
+  .phone{height:600px;margin-inline:auto;width:100%;max-width:400px}
+  .studio{padding:28px 22px}
+  .info{text-align:center}
+  .info p{margin-inline:auto}
+  .dots,.chips{justify-content:center}
+  .r1{width:240px;height:240px;left:-90px}
+  .r3{width:300px;height:300px}
+  .r2{width:200px;height:200px}
+}
+@media (max-width:560px){
+  body{font-size:15px}
+  .brand b{font-size:18px}
+  .brand .logo{width:40px;height:40px}
+  .hero{padding-block:28px 36px}
+  .herogrid{margin-top:36px}
+  .lead{font-size:17px}
+  .ctas .btn{flex:1 1 100%}
+  .start .date{font-size:38px}
+  section.block{padding-block:56px}
+  .facts{gap:10px}
+  .fact{padding:18px 16px;min-height:170px}
+  .fact .k{font-size:42px}
+  .fact b{font-size:18px}
+  .gets{grid-template-columns:minmax(0,1fr)}
+  .grads{grid-template-columns:minmax(0,1fr)}
+  .days{padding-left:40px}
+  .day .dot{left:-40px}
+  .day h3{font-size:23px}
+  .pricebox>div{padding:26px}
+  .phone{border-width:7px;border-radius:34px;height:560px}
+  .studio{border-radius:24px;padding:22px 16px}
+  .final .wrap{padding-block:64px}
+  .final .fr{width:240px;height:240px;right:-70px;bottom:-70px}
+}
+@media (max-width:400px){.facts{grid-template-columns:minmax(0,1fr)}.fact{min-height:0}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .rv.pre{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="bg" aria-hidden="true">
+  <div class="r r1"><i class="rose" data-s="0.22" data-t="38"></i></div>
+  <div class="r r2"><i class="rose" data-s="-0.3" data-t="30"></i></div>
+  <div class="r r3"><i class="rose" data-s="0.16" data-t="42"></i></div>
+  <div class="r r4"><i class="rose" data-s="-0.24" data-t="34"></i></div>
+  <div class="r r5"><i class="rose" data-s="0.28" data-t="28"></i></div>
+</div>
+
+<div class="page">
+<header class="top" id="top"><div class="wrap">
+  <div class="row">
+    <a class="brand" href="#hero"><span class="logo"><i class="rose spin" data-s="0.5" data-t="22"></i></span><span><b>Юлия</b><small>колорист · Уфа</small></span></a>
+    <nav class="nav" aria-label="Разделы"><a href="#try">Окрашивания</a><a href="#program">Программа</a><a href="#grads">Выпускницы</a><a href="#price">Стоимость</a><a href="#faq">Вопросы</a></nav>
+    <a class="btn btn-red btn-sm" href="#bot">Записаться</a>
+  </div>
+  <nav class="navrow" aria-label="Разделы"><a href="#try">Окрашивания</a><a href="#program">Программа</a><a href="#grads">Выпускницы</a><a href="#price">Стоимость</a><a href="#faq">Вопросы</a></nav>
+</div></header>
+
+<main>
+<section class="hero" id="hero"><div class="wrap">
+  <p class="eyebrow fade" style="text-align:center">Авторский курс · индивидуально · офлайн · Уфа</p>
+  <div class="title">
+    <div class="bigrose" aria-hidden="true"><i class="rose spin" data-s="0.18" data-t="34"></i></div>
+    <h1 id="h1">Колорист</h1>
+    <span class="scr">с нуля</span>
+  </div>
+  <div class="herogrid">
+    <div class="fade d1">
+      <p class="lead"><b>7 дней — и вы уверенно ведёте клиентку от консультации до результата.</b> Без опыта, с отработкой на моделях.</p>
+      <div class="ctas">
+        <a class="btn btn-red" href="#bot">Забронировать место <span class="arr">→</span></a>
+        <a class="btn btn-line" href="#try">Посмотреть окрашивания</a>
+      </div>
+    </div>
+    <aside class="start fade d2" aria-label="Ближайший поток">
+      <p class="eyebrow" style="color:#f1c9d3">Ближайший старт</p>
+      <p class="date">23 ноября</p>
+      <div class="timer" id="timer"><div><b id="t-d">–</b><span>дней</span></div><div><b id="t-h">–</b><span>часов</span></div><div><b id="t-m">–</b><span>минут</span></div></div>
+      <div class="seats"><div class="seat">2</div><p>Всего 2 места<span>на моделях работаете вдвоём</span></p></div>
+      <div class="pmini"><b>40 000 ₽</b><s>50 000 ₽</s><small>цена при раннем бронировании</small></div>
+    </aside>
+  </div>
+</div></section>
+
+<section class="block" id="try"><div class="wrap">
+  <div class="sh rv"><h2>Чему <span class="scr">научитесь</span></h2><p>Нажмите на волосы — и посмотрите, как меняется цвет на каждом этапе курса.</p></div>
+  <div class="studio rv zoom">
+    <div class="stage" id="stage" role="button" tabindex="0" aria-label="Сменить окрашивание">
+      <img id="hBase" class="hp" alt="Волосы со спины: текущее окрашивание">
+      <img id="hNext" class="hp nx" alt="" aria-hidden="true">
+      <svg class="hl" viewBox="0 0 100 150" preserveAspectRatio="none" aria-hidden="true"><path id="hLine" fill="none" stroke="#fff" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linecap="round" style="opacity:0"/></svg>
+      <div class="tap" id="tapHint"><i></i>Нажмите на волосы</div>
+    </div>
+    <div class="info" aria-live="polite">
+      <p class="step" id="mStep">Этап 0 из 5</p>
+      <h3 id="mTitle">До: чёрные волосы</h3>
+      <p id="mText">Так клиентка приходит к вам в кресло. Нажмите на волосы, чтобы начать.</p>
+      <div class="dots" id="mDots"></div>
+      <div class="chips" id="mChips"></div>
+      <button class="btn btn-light next" id="mNext" type="button">Следующий этап <span class="arr">→</span></button>
+    </div>
+  </div>
+</div></section>
+
+<section class="block"><div class="wrap">
+  <div class="sh rv"><h2>Коротко <span class="scr">о курсе</span></h2><p>Учитесь лично у Юлии, в маленькой группе на моделях. Не смотрите со стороны, а делаете сами — каждый день.</p></div>
+  <div class="facts">
+    <div class="fact rv"><span class="k">1:1</span><b>Индивидуально</b><span>теория и разборы лично с вами</span></div>
+    <div class="fact rv"><span class="k">2</span><b>Места в потоке</b><span>на моделях работаете вдвоём</span></div>
+    <div class="fact rv"><span class="k">7</span><b>Дней практики</b><span>офлайн, Уфа, Сипайлово</span></div>
+    <div class="fact rv"><span class="k">0</span><b>Опыта не нужно</b><span>начинаем с самой базы</span></div>
+  </div>
+</div></section>
+
+<section class="block" id="program"><div class="wrap">
+  <div class="sh rv"><h2>Программа <span class="scr">по дням</span></h2><p>От теории цвета до сложных окрашиваний и выхода из чёрного. Каждый день — отработка руками.</p></div>
+  <div class="days" id="days">
+    <span class="fill" id="fill"></span>
+    <div class="day rv" data-c="#141012"><span class="dot"></span><div class="n">День 1</div><h3>Теория цвета</h3><p>Уровни тона, фон осветления, круг Освальда. Как читать волосы клиентки на консультации.</p></div>
+    <div class="day rv" data-c="#3a1913"><span class="dot"></span><div class="n">День 2</div><h3>Красители и пропорции</h3><p>Оксиды, расчёт смеси, расход. Как не ошибиться в формуле.</p></div>
+    <div class="day rv" data-c="#5a2a22"><span class="dot"></span><div class="n">День 3</div><h3>Окрашивание в один тон</h3><p>Корни, седина, ровный цвет по длине. Первая модель.</p></div>
+    <div class="day rv" data-c="#b98a4e"><span class="dot"></span><div class="n">День 4</div><h3>Осветление и тонирование</h3><p>Блонд без желтизны, работа с пигментом, сохранение качества волос.</p></div>
+    <div class="day rv" data-c="#9b7451"><span class="dot"></span><div class="n">День 5</div><h3>Сложное окрашивание</h3><p>Растяжки и мягкие переходы. Как сделать сложное окрашивание за 3 часа.</p></div>
+    <div class="day rv" data-c="#d8bf98"><span class="dot"></span><div class="n">День 6</div><h3>Выход из чёрного</h3><p>Коррекция и смывка без вреда для волос. Одна из самых востребованных услуг.</p></div>
+    <div class="day rv" data-c="#ecdcc0"><span class="dot"></span><div class="n">День 7</div><h3>Модель и портфолио</h3><p>Работа от начала до конца, съёмка «до/после», как назначать цену и находить первых клиенток.</p></div>
+  </div>
+</div></section>
+
+<section class="block"><div class="wrap">
+  <div class="sh rv"><h2>Что вы <span class="scr">получите</span></h2><p>После курса вы не остаётесь одна с вопросами.</p></div>
+  <div class="gets">
+    <div class="get rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21l4-3 4 3M7 9h10M7 12h6"/></svg></span><b>Сертификат</b><p>о прохождении авторского курса</p></div>
+    <div class="get rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8"/></svg></span><b>Поддержка 6 месяцев</b><p>помощь с формулами и разбор ваших работ</p></div>
+    <div class="get rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12v18H6z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span><b>Список материалов</b><p>с чем работать и что купить в первую очередь</p></div>
+    <div class="get rv"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M16 4.5a3 3 0 010 6M18 14c2 .8 3 2.8 3 6"/></svg></span><b>Контакты закупа</b><p>менеджеры, у которых выгодно брать материалы</p></div>
+  </div>
+</div></section>
+
+<section class="block" id="grads"><div class="wrap">
+  <div class="sh rv"><h2>Выпускницы <span class="scr">курса</span></h2><p>Каждая уходит с сертификатом «Колорист с нуля» и «Сложные техники окрашивания» — и с полугодом поддержки впереди.</p></div>
+  <div class="grads">
+    <div class="quote rv"><p class="q">Вчера — с нуля. <em>Сегодня — колорист</em> с сертификатом.</p><span>Следующей можете быть вы. Ближайший поток — 23 ноября.</span></div>
+    <figure class="rv"><div class="ph"><img class="px" src="img/grad1.jpg" alt="Выпускница курса с сертификатом и Юлия в студии" loading="lazy"></div><figcaption><b>Выпуск · май 2026</b>сертификат о прохождении курса</figcaption></figure>
+    <figure class="rv"><div class="ph"><img class="px" src="img/grad2.jpg" alt="Выпускница курса с сертификатом в студии" loading="lazy"></div><figcaption><b>Ещё одна выпускница</b>курс пройден, сертификат на руках</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="block" id="price"><div class="wrap">
+  <div class="pricebox rv zoom" id="pricebox">
+    <div class="l">
+      <p class="eyebrow" style="color:#f1c9d3">Стоимость</p>
+      <p class="big"><span id="bigPrice">40 000</span> ₽</p>
+      <p class="old">при раннем бронировании · обычная цена <s>50 000 ₽</s></p>
+      <p class="note">Рассрочки нет. Место и цена закрепляются предоплатой.</p>
+      <a class="btn btn-light" href="#bot" style="justify-self:start">Забронировать со скидкой <span class="arr">→</span></a>
+    </div>
+    <div class="r">
+      <p class="eyebrow" style="color:#f1c9d3">Входит в стоимость</p>
+      <ul>
+        <li>7 дней обучения лично с Юлией</li>
+        <li>Отработка на моделях, по 2 человека</li>
+        <li>Сертификат</li>
+        <li>Список материалов и контакты закупа</li>
+        <li>Поддержка 6 месяцев после курса</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" id="bot"><div class="wrap">
+  <div class="botgrid">
+    <div class="phone rv zoom">
+      <div class="tgbar"><div class="ava rose"></div><div><b>Курс «Колорист с нуля»</b><span id="status">онлайн</span></div></div>
+      <div class="chat" id="chat" aria-live="polite"></div>
+      <form class="inputbar" id="form">
+        <input id="inp" placeholder="Выберите кнопку выше" disabled autocomplete="off">
+        <button id="send" type="submit" disabled aria-label="Отправить">➤</button>
+      </form>
+    </div>
+    <div class="side">
+      <div class="rv"><p class="eyebrow">Запись в Telegram</p><h3 style="margin-top:12px">Место — <em>за минуту</em></h3><p class="muted" style="margin-top:14px;max-width:44ch;color:var(--quiet)">Без долгой переписки: бот ответит на вопросы и запишет вас в любое время, даже ночью.</p></div>
+      <ol class="steps rv">
+        <li><div><b>Нажмите «Записаться»</b><br><span>бот покажет свободные места на 23 ноября</span></div></li>
+        <li><div><b>Оставьте имя и телефон</b><br><span>Юлия свяжется с вами лично</span></div></li>
+        <li><div><b>Юлия свяжется с вами</b><br><span>ответит на вопросы и пришлёт реквизиты</span></div></li>
+        <li><div><b>Внесите предоплату</b><br><span>место и цена 40 000 ₽ закрепятся за вами</span></div></li>
+      </ol>
+    </div>
+  </div>
+</div></section>
+
+<section class="block" id="faq"><div class="wrap">
+  <div class="sh rv"><h2>Частые <span class="scr">вопросы</span></h2><p>Не нашли ответ — спросите в боте, он ответит сразу.</p></div>
+  <div class="faq rv">
+  <details><summary>Мне нужен опыт в парикмахерском деле?</summary><p>Нет. Курс начинается с самой базы — теории цвета и уровней тона.</p></details>
+  <details><summary>Как работает скидка 10 000 ₽?</summary><p>Это цена при раннем бронировании: вносите предоплату заранее, и курс обходится в 40 000 ₽ вместо 50 000 ₽.</p></details>
+  <details><summary>Есть рассрочка?</summary><p>Рассрочки нет. Чтобы было комфортнее, можно забронировать место заранее по сниженной цене.</p></details>
+  <details><summary>Где проходит обучение?</summary><p>Уфа, Сипайлово, ул. Юрия Гагарина, 36.</p></details>
+  <details><summary>Что будет после курса?</summary><p>Сертификат, список материалов, контакты менеджеров для закупа и полгода поддержки: можно присылать работы и задавать вопросы.</p></details>
+  </div>
+</div></section>
+</main>
+
+<section class="final">
+  <div class="fr" aria-hidden="true"><i class="rose spin" data-s="-0.2" data-t="30"></i></div>
+  <div class="wrap">
+  <div class="rv">
+    <h2>2 места на 23 ноября <em>одно может стать вашим</em></h2>
+    <p>Забронируйте сейчас — и курс обойдётся в 40 000 ₽ вместо 50 000 ₽.</p>
+    <p class="addr">Уфа, Сипайлово, ул. Юрия Гагарина, 36</p>
+  </div>
+  <a class="btn btn-light rv" href="#bot">Забронировать место <span class="arr">→</span></a>
+  </div>
+</section>
+<footer><div class="wrap"><span>Юлия · колорист, парикмахер-технолог · Уфа</span><span>Сайт и бот — <a href="https://oneiric-codus.github.io/vizitka/" target="_blank" rel="noopener">Степан Семенюк</a></span></div></footer>
+</div>
+
+<script>
+(function(){
+  document.documentElement.lang='ru';
+  /* ===== НАСТРОЙКИ ===== адрес Worker-а для заявок и ник бота (без @) */
+  var LEAD_ENDPOINT='';
+  var BOT_USERNAME='';
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* fit hero title to width */
+  var h1=document.getElementById('h1');
+  function fitTitle(){var box=h1.parentElement.clientWidth;h1.style.fontSize='100px';var w=h1.scrollWidth;var fs=Math.min(170,Math.floor(100*box*0.94/w));h1.style.fontSize=fs+'px';h1.parentElement.style.paddingTop=Math.round(fs*0.34)+'px'}
+  fitTitle();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitTitle);
+
+  /* countdown */
+  function tick(){var now=new Date(),ms=new Date(now.getFullYear(),10,23,10,0,0)-now;
+    if(ms<0){document.getElementById('timer').innerHTML='<div style="grid-column:1/-1"><b style="font-size:16px">Идёт набор на следующий поток</b></div>';return false}
+    document.getElementById('t-d').textContent=Math.floor(ms/864e5);document.getElementById('t-h').textContent=Math.floor(ms%864e5/36e5);document.getElementById('t-m').textContent=Math.floor(ms%36e5/6e4);return true}
+  try{if(tick())setInterval(tick,30000)}catch(e){}
+
+  /* spinning roses: a top seen from above, wobbling on its axis */
+  var roses=[].slice.call(document.querySelectorAll('.rose[data-s]'));
+  function spin(){
+    var y=window.scrollY;
+    roses.forEach(function(el,i){
+      var s=parseFloat(el.dataset.s),tilt=parseFloat(el.dataset.t),a=y*s+i*47;
+      var wob=Math.sin((y*Math.abs(s)+i*60)/90)*7;
+      el.style.transform='rotateX('+(tilt+wob)+'deg) rotateY('+(Math.cos((y*Math.abs(s)+i*60)/90)*7)+'deg) rotateZ('+a+'deg)';
+    });
+  }
+
+  /* header active link */
+  var links=[].slice.call(document.querySelectorAll('.nav a,.navrow a'));
+  var ids=['try','program','grads','price','faq'];
+  function activeNav(){var cur='';ids.forEach(function(id){var el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<innerHeight*.4)cur=id});
+    links.forEach(function(a){a.classList.toggle('act',a.getAttribute('href')==='#'+cur)})}
+
+  /* reveal */
+  var rvs=[].slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window&&!reduce){
+    rvs.forEach(function(el){if(el.getBoundingClientRect().top>innerHeight*.92)el.classList.add('pre')});
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target;
+      var sib=[].slice.call(el.parentElement.children).filter(function(c){return c.classList.contains('rv')});
+      el.style.transitionDelay=Math.min(Math.max(0,sib.indexOf(el)),5)*90+'ms';el.classList.remove('pre');el.classList.add('in');io.unobserve(el);
+      if(el.id==='pricebox')countPrice()}})},{threshold:.12,rootMargin:'0px 0px -30px 0px'});
+    rvs.forEach(function(el){io.observe(el)});
+  }else{rvs.forEach(function(el){el.classList.add('in')})}
+
+  var counted=false;
+  function countPrice(){if(counted||reduce)return;counted=true;var el=document.getElementById('bigPrice'),t0=null;
+    function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1100),e=1-Math.pow(1-p,3),v=Math.round((50000-10000*e)/100)*100;el.textContent=String(v).replace(/\B(?=(\d{3})+(?!\d))/g,' ');if(p<1)requestAnimationFrame(f)}
+    el.textContent='50 000';setTimeout(function(){requestAnimationFrame(f)},500)}
+
+  /* programme line */
+  var days=document.getElementById('days'),fill=document.getElementById('fill'),dayEls=[].slice.call(days.querySelectorAll('.day'));
+  function timeline(){var r=days.getBoundingClientRect(),mid=innerHeight*.6;fill.style.height=Math.max(0,Math.min(r.height-20,mid-r.top))+'px';
+    dayEls.forEach(function(d){var on=d.getBoundingClientRect().top+26<mid;d.classList.toggle('on',on);d.querySelector('.dot').style.background=on?d.dataset.c:''})}
+
+  var pxs=[].slice.call(document.querySelectorAll('.px'));
+  function parallax(){if(reduce)return;pxs.forEach(function(img){var r=img.parentElement.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;img.style.setProperty('--py',(-8-(r.top+r.height/2-innerHeight/2)/innerHeight*28)+'px')})}
+
+  function onScroll(){if(!reduce)spin();activeNav();timeline();parallax()}
+  var raf=0;window.addEventListener('scroll',function(){if(!raf)raf=requestAnimationFrame(function(){raf=0;onScroll()})},{passive:true});
+  window.addEventListener('resize',function(){fitTitle();onScroll()});spin();onScroll();
+
+  /* ---------- hair photos: wave recolour ---------- */
+  var SRC=[0,1,2,3,4,5].map(function(k){return 'img/hair'+k+'.webp'});
+  var STATES=[
+    {t:'До: чёрные волосы',d:'Так клиентка приходит к вам в кресло. Нажмите на волосы, чтобы начать.',chip:'Исходный'},
+    {t:'Окрашивание в один тон',d:'Ровный насыщенный цвет от корней до кончиков. Перекрываем седину и освежаем оттенок.',chip:'В один тон'},
+    {t:'Осветление',d:'Поднимаем уровень тона: волосы светлеют и проявляют тёплый фон осветления.',chip:'Осветление'},
+    {t:'Тонирование',d:'Убираем желтизну и задаём оттенок: жемчужный, бежевый или холодный блонд.',chip:'Тонирование'},
+    {t:'Сложное окрашивание',d:'Мягкий переход от тёмных корней к светлым концам: пряди, растяжка цвета, объём.',chip:'Сложное'},
+    {t:'Выход из чёрного',d:'Из чёрного — в блонд, бережно и поэтапно. Одна из самых востребованных услуг.',chip:'Из чёрного',fromBlack:true}
+  ];
+  var base=document.getElementById('hBase'),nxt=document.getElementById('hNext'),wl=document.getElementById('hLine');
+  base.src=SRC[0];
+  // warm the decoder for every photo so the first tap is instant
+  SRC.forEach(function(s){var im=new Image();im.src=s;if(im.decode)im.decode().catch(function(){})});
+  var cur=0,busy=false;
+  function wavePts(y,ph){var pts=[],xs=[];for(var x=100;x>=0;x-=4){xs.push(x)}
+    xs.forEach(function(x){pts.push([x,y+2.6*Math.sin(x/100*Math.PI*3+ph)+1.2*Math.sin(x/100*Math.PI*7-ph*1.3)])});return pts}
+  function animate(to,dur){
+    return new Promise(function(res){
+      nxt.src=SRC[to];
+      var ready=nxt.decode?nxt.decode().catch(function(){}):Promise.resolve();
+      ready.then(function(){
+        var t0=null;nxt.style.visibility='visible';
+        function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/dur),e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
+          var y=-6+e*112,ph=(t-t0)/180,pts=wavePts(y,ph);
+          nxt.style.clipPath='polygon(0% 0%,100% 0%,'+pts.map(function(q){return q[0].toFixed(1)+'% '+Math.max(0,q[1]).toFixed(2)+'%'}).join(',')+')';
+          wl.setAttribute('d','M'+pts.slice().reverse().map(function(q){return q[0].toFixed(1)+' '+(q[1]*1.5).toFixed(2)}).join(' L'));
+          wl.style.opacity=p>0&&p<.98?1:0;
+          if(p<1)requestAnimationFrame(f);else{base.src=SRC[to];(base.decode?base.decode().catch(function(){}):Promise.resolve()).then(function(){nxt.style.visibility='hidden';nxt.style.clipPath='polygon(0 0,100% 0,100% 0,0 0)';res()})}}
+        requestAnimationFrame(f);
+      });
+    });
+  }
+  function go(next){
+    if(busy||next===cur)return;busy=true;document.getElementById('tapHint').classList.add('hide');setCaption(next);
+    var chain=Promise.resolve();
+    if(STATES[next].fromBlack&&cur!==0)chain=chain.then(function(){return animate(0,reduce?1:650)});
+    chain.then(function(){return animate(next,reduce?1:1300)}).then(function(){cur=next;busy=false});
+  }
+  var dotsEl=document.getElementById('mDots'),chipsEl=document.getElementById('mChips');
+  STATES.forEach(function(s,i){var d=document.createElement('span');dotsEl.appendChild(d);var b=document.createElement('button');b.type='button';b.textContent=s.chip;b.onclick=function(){go(i)};chipsEl.appendChild(b)});
+  function setCaption(i){document.getElementById('mStep').textContent=i===0?'Исходный цвет':'Этап '+i+' из 5';document.getElementById('mTitle').textContent=STATES[i].t;document.getElementById('mText').textContent=STATES[i].d;
+    [].forEach.call(dotsEl.children,function(d,k){d.classList.toggle('on',k<=i)});[].forEach.call(chipsEl.children,function(c,k){c.classList.toggle('on',k===i)})}
+  setCaption(0);
+  function nextState(){go((cur+1)%STATES.length)}
+  var stage=document.getElementById('stage');stage.addEventListener('click',nextState);
+  stage.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();nextState()}});
+  document.getElementById('mNext').addEventListener('click',nextState);
+
+  /* ---------- bot ---------- */
+  var chat=document.getElementById('chat'),inp=document.getElementById('inp'),send=document.getElementById('send'),form=document.getElementById('form'),status=document.getElementById('status');
+  var state={mode:null,name:'',phone:'',booked:false};
+  function scroll(){chat.scrollTo({top:chat.scrollHeight,behavior:reduce?'auto':'smooth'})}
+  function bot(html,delay){status.innerHTML='печатает<span class="typing"><i></i><i></i><i></i></span>';
+    return new Promise(function(r){setTimeout(function(){status.textContent='онлайн';var m=document.createElement('div');m.className='msg bot';m.innerHTML=html;chat.appendChild(m);scroll();r()},delay==null?650:delay)})}
+  function me(t){var m=document.createElement('div');m.className='msg me';m.textContent=t;chat.appendChild(m);scroll()}
+  function clearKb(){[].forEach.call(chat.querySelectorAll('.kb'),function(k){k.remove()})}
+  function kb(list){clearKb();var k=document.createElement('div');k.className='kb';list.forEach(function(b){var x=document.createElement('button');x.type='button';x.textContent=b[0];if(b[2])x.className='hot';x.onclick=function(){clearKb();me(b[0]);b[1]()};k.appendChild(x)});chat.appendChild(k);scroll()}
+  function ask(mode,ph){state.mode=mode;inp.disabled=false;send.disabled=false;inp.placeholder=ph;inp.value='';try{inp.focus({preventScroll:true})}catch(e){}}
+  function stopAsk(){state.mode=null;inp.disabled=true;send.disabled=true;inp.placeholder='Выберите кнопку выше';inp.value=''}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function menu(){kb([['Записаться на 23 ноября',book,true],['Программа курса',program],['Стоимость',price],['Частые вопросы',faq]])}
+  function program(){bot('<b>7 дней, офлайн, индивидуально</b>\n\n1 — теория цвета и уровни тона\n2 — красители, оксиды, пропорции\n3 — окрашивание в один тон\n4 — осветление и тонирование\n5 — сложное окрашивание\n6 — выход из чёрного\n7 — работа на модели и портфолио\n\nОтработка на моделях — по 2 человека.').then(function(){kb([['Записаться',book,true],['Стоимость',price],['Назад в меню',menu]])})}
+  function price(){bot('<b>50 000 ₽</b> — полная стоимость.\n<b>40 000 ₽</b> — при раннем бронировании, скидка 10 000 ₽.\n\nВходит: сертификат, список материалов, контакты менеджеров для закупа и поддержка 6 месяцев после курса.\nРассрочки нет.').then(function(){kb([['Забронировать за 40 000 ₽',book,true],['Назад в меню',menu]])})}
+  function faq(){kb([
+    ['Нужен ли опыт?',function(){bot('Нет, опыт не нужен. Начинаем с самой базы — теории цвета.').then(faq)}],
+    ['Где проходит?',function(){bot('Уфа, Сипайлово, <b>ул. Юрия Гагарина, 36</b>.').then(faq)}],
+    ['Есть рассрочка?',function(){bot('Рассрочки нет, но при раннем бронировании курс стоит 40 000 ₽ вместо 50 000 ₽.').then(faq)}],
+    ['Что после курса?',function(){bot('Сертификат и полгода поддержки: присылаете работы, задаёте вопросы — Юлия помогает.').then(faq)}],
+    ['Назад в меню',menu]])}
+  function book(){if(state.booked){bot('Ваша заявка уже у Юлии ✓ Она свяжется с вами.').then(function(){kb(endKb())});return}
+    bot('Отлично! Поток <b>23 ноября</b>, свободно мест: <b>2</b>.\nКак вас зовут?').then(function(){ask('name','Ваше имя')})}
+  function afterName(){bot('Приятно познакомиться, '+esc(state.name)+'!\nОставьте номер телефона — Юлия свяжется с вами.').then(function(){ask('phone','+7 900 000-00-00')})}
+  function afterPhone(){stopAsk();bot('Отправляю заявку Юлии…',450).then(sendLead).then(function(ok){
+    if(ok){state.booked=true;return bot('<b>Готово! Заявка у Юлии</b> ✓\n\nОна свяжется с вами и пришлёт реквизиты для предоплаты — она закрепит место и цену <b>40 000 ₽</b>.\n\nАдрес: Сипайлово, ул. Юрия Гагарина, 36',900)}
+    return bot('Не получилось отправить заявку автоматически 😔\nНапишите Юлии в Telegram <b>@yulia_MF</b> своё имя и телефон — она забронирует место.',600)}).then(function(){kb(endKb())})}
+  function endKb(){var a=[['Назад в меню',menu]];if(BOT_USERNAME)a.unshift(['Открыть бота в Telegram',function(){window.location.href='https://t.me/'+BOT_USERNAME}]);return a}
+  function sendLead(){
+    if(!LEAD_ENDPOINT)return new Promise(function(r){setTimeout(function(){r(true)},300)});
+    return fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:state.name,phone:state.phone,website:''})})
+      .then(function(r){return r.ok}).catch(function(){return false})}
+  form.addEventListener('submit',function(e){e.preventDefault();var v=inp.value.trim();if(!v)return;
+    if(state.mode==='name'){state.name=v.slice(0,40);me(state.name);stopAsk();afterName()}
+    else if(state.mode==='phone'){if(v.replace(/\D/g,'').length<10){me(v);inp.value='';bot('Кажется, в номере не хватает цифр. Напишите, пожалуйста, полностью, например +7 917 123-45-67.');return}
+      state.phone=v.slice(0,24);me(state.phone);afterPhone()}});
+  bot('Здравствуйте! Я помощник Юлии 👋\nЗдесь можно узнать всё о курсе <b>«Колорист с нуля»</b> и забронировать место.\n\nБлижайший старт — <b>23 ноября</b>, мест всего <b>2</b>.',200).then(menu);
+})();
+</script>
+
+</body>
+</html>
