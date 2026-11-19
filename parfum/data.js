@@ -8,6 +8,7 @@
    - placeholder: true  — аромата не было у неё в профиле, добавлен
               для наполнения каталога, заменить или удалить
    - check:   текст пометки, что нужно уточнить
+   - nose:    парфюмер (показывается в карточке, как у Frédéric Malle)
    - photo:   когда будут фото флаконов, добавьте photo: 'img/имя.jpg'
    - occ / vibe / season: теги для теста «Найди свой аромат»
        occ:    day (каждый день), date (свидание), evening (вечер), summer (отпуск)
@@ -38,6 +39,7 @@ window.PERFUMES = [
   },
   {
     id: 'bijou-zafran', brand: 'Ormonde Jayne', name: 'Bijou Zafran',
+    nose: 'Élodie Bernard',
     word: 'ZAFRAN', fam: ['wood'],
     occ: ['evening'], vibe: ['loud','mystery'], season: 'cold',
     notes: { top: 'шафран, груша', heart: 'ирис, сиприол, бензоин', base: 'кожа, сандал, мускус' },
@@ -48,6 +50,7 @@ window.PERFUMES = [
   },
   {
     id: 'orchidee-de-minuit', brand: 'Chloé', name: 'Orchidée de Minuit',
+    nose: 'Mathieu Nardin, Cécile Matton',
     word: 'MINUIT', fam: ['sweet', 'floral'],
     occ: ['date','evening'], vibe: ['mystery','loud'], season: 'cold',
     notes: { top: 'орхидея, ром, гвоздика', heart: 'жасмин, бензоин', base: 'ваниль, пачули, мускус' },
@@ -87,6 +90,7 @@ window.PERFUMES = [
   },
   {
     id: 'molecule-ginger', brand: 'Escentric Molecules', name: 'Molecule 01 + Ginger',
+    nose: 'Geza Schoen',
     word: 'GINGER', fam: ['fresh'],
     occ: ['day'], vibe: ['quiet'], season: 'any',
     notes: { top: 'имбирь', heart: 'амбретта', base: 'Iso E Super' },
@@ -105,6 +109,7 @@ window.PERFUMES = [
   },
   {
     id: 'per-se', brand: '27 87', name: 'Per Sē',
+    nose: 'Shyamala Maisondieu',
     word: 'PER SĒ', fam: ['floral'],
     occ: ['day'], vibe: ['quiet','tender'], season: 'any',
     check: 'Название определено по нотам из её поста, уточнить',
@@ -115,6 +120,7 @@ window.PERFUMES = [
   },
   {
     id: 'violetta', brand: "Penhaligon's", name: 'Violetta',
+    nose: 'Michael Pickthall',
     word: 'VIOLETTA', fam: ['floral'],
     occ: ['day'], vibe: ['tender','quiet'], season: 'warm',
     check: 'Предположительно Violetta («прозрачная фиалка»), уточнить',
@@ -125,6 +131,7 @@ window.PERFUMES = [
   },
   {
     id: 'ombre-leather', brand: 'Tom Ford', name: 'Ombré Leather',
+    nose: 'Sonia Constant',
     word: 'LEATHER', fam: ['wood'],
     occ: ['evening','day'], vibe: ['loud','mystery'], season: 'cold',
     notes: { top: 'кардамон', heart: 'кожа, жасмин самбак', base: 'амбра, мох, пачули' },
@@ -134,6 +141,7 @@ window.PERFUMES = [
   },
   {
     id: 'blanche', brand: 'Byredo', name: 'Blanche',
+    nose: 'Jérôme Epinette',
     word: 'BLANCHE', fam: ['fresh', 'floral'],
     occ: ['day','date'], vibe: ['quiet','tender'], season: 'warm',
     notes: { top: 'альдегиды, белая роза, розовый перец', heart: 'пион, нероли, фиалка', base: 'светлая древесина, мускус' },
@@ -143,6 +151,7 @@ window.PERFUMES = [
   },
   {
     id: 'coco-mademoiselle', brand: 'Chanel', name: 'Coco Mademoiselle',
+    nose: 'Jacques Polge',
     word: 'COCO', fam: ['floral'],
     occ: ['day','evening'], vibe: ['loud'], season: 'any', placeholder: true,
     check: 'Был у неё полным флаконом, уточнить, есть ли на распив',
@@ -163,6 +172,7 @@ window.PERFUMES = [
   },
   {
     id: 'linterdit', brand: 'Givenchy', name: "L'Interdit",
+    nose: 'Dominique Ropion, Fanny Bal, Anne Flipo',
     word: 'INTERDIT', fam: ['floral', 'sweet'],
     occ: ['evening','date'], vibe: ['mystery'], season: 'any', placeholder: true,
     check: 'Был у неё полным флаконом, уточнить, есть ли на распив',
@@ -173,6 +183,7 @@ window.PERFUMES = [
   },
   {
     id: 'br540', brand: 'Maison Francis Kurkdjian', name: 'Baccarat Rouge 540',
+    nose: 'Francis Kurkdjian',
     word: 'ROUGE', fam: ['sweet', 'wood'],
     occ: ['evening','date'], vibe: ['loud','mystery'], season: 'any', placeholder: true,
     notes: { top: 'шафран, жасмин', heart: 'амбровое дерево', base: 'кедр, смола ели' },
@@ -182,6 +193,7 @@ window.PERFUMES = [
   },
   {
     id: 'santal-33', brand: 'Le Labo', name: 'Santal 33',
+    nose: 'Frank Voelkl',
     word: 'SANTAL', fam: ['wood'],
     occ: ['day'], vibe: ['mystery','quiet'], season: 'cold', placeholder: true,
     notes: { top: 'кардамон, фиалка', heart: 'ирис, папирус', base: 'сандал, кедр, кожа' },
@@ -191,6 +203,7 @@ window.PERFUMES = [
   },
   {
     id: 'love-dont-be-shy', brand: 'Kilian', name: "Love, Don't Be Shy",
+    nose: 'Calice Becker',
     word: 'LOVE', fam: ['sweet'],
     occ: ['date'], vibe: ['tender','loud'], season: 'cold', placeholder: true,
     notes: { top: 'нероли, розовый перец, бергамот', heart: 'флёрдоранж, жасмин, ирис', base: 'ваниль, маршмеллоу, мускус' },
